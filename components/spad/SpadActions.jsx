@@ -6,7 +6,7 @@ import Contribute from './Contribute';
 import ClaimTarget from './ClaimTarget';
 import ClaimInvestment from './ClaimInvestment';
 
-const SpadActions = ({ clubAddress, spadId, spad, loadSpad }) => {
+const SpadActions = ({ clubAddress, spadId, spad, loadSpad, creator }) => {
     const { address } = useContext(WalletContext)
     const [contribution, setContribution] = useState(0);
 
@@ -34,7 +34,14 @@ const SpadActions = ({ clubAddress, spadId, spad, loadSpad }) => {
                 {
                     spad.targetClaimed ?
                     <ClaimInvestment address={address} clubAddress={clubAddress} spadId={spadId} contribution={contribution} /> :
-                    <ClaimTarget address={address} clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad} />
+                    <>
+                    {
+                        address == creator ?
+                        <ClaimTarget address={address} clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad} /> :
+                        <p className='font-semibold text-lg text-orange-400'>Target is not yet claimed</p>
+                    }
+                        
+                    </>
                 }
                     
                 </>

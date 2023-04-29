@@ -57,7 +57,7 @@ const TokenClubPage = ({ params }) => {
           SPADS {" "}
           <span className='inline-flex items-center justify-center w-8 h-8 ml-2 text-lg font-semibold text-blue-800 bg-blue-200 rounded-full'>{ club.spadCount }</span> 
         </h3>
-        <CreateSpad clubAddress={clubAddress} loadClub={loadClub} />
+        <CreateSpad clubAddress={clubAddress} loadClub={loadClub} creator={club.creator} />
       </div>
       { spadIds.length > 0 && 
         <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>

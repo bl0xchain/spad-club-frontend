@@ -4,8 +4,13 @@ import { Button, Label, Modal, TextInput, Textarea } from 'flowbite-react'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 
-const CreateSpad = ({ clubAddress, loadClub }) => {
+const CreateSpad = ({ clubAddress, loadClub, creator }) => {
     const { address } = useContext(WalletContext)
+
+    if(creator != address) {
+        return (<></>)
+    }
+
     const [show, setShow] = useState(false)
     const [creating, setCreating] = useState(false)
     const [name, setName] = useState("")
