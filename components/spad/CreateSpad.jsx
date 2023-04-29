@@ -231,7 +231,7 @@ const CreateSpad = ({ clubAddress, loadClub }) => {
                         <div className='pt-4 flex gap-4'>
                             {
                                 creating ?
-                                <Button isProcessing={true}>
+                                <Button isProcessing={true} disabled>
                                     Creating a SPAD
                                 </Button> :
                                 <Button type="submit" onClick={handleCreateSpad}>

@@ -15,19 +15,21 @@ const CreateClubPage = () => {
 
     const router = useRouter()
 
-    const handleCreateClub = async () => {
+    const handleCreateClub = async (e) => {
+        e.preventDefault();
         if (name == "" || description == "") {
             toast.error("All fields are compulsory")
             return;
         }
-
+        setCreating(true)
         const response = await createTokenClub(address, name, description);
         if (response.code == 200) {
             toast.success("TokenClub is created");
-            router.push(`/clubs/${response.data.events.CoopCreated.returnValues.coop}`)
+            router.push(`/clubs/${response.data.events.TokenClubCreated.returnValues.tokenClub}`)
         } else {
             toast.error(response?.status)
         }
+        setCreating(false)
     }
 
     return (
@@ -37,7 +39,7 @@ const CreateClubPage = () => {
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                         Create a TokenClub
                     </h5>
-                    <form className="flex flex-col gap-4">
+                    <form className="flex flex-col gap-4" onSubmit={handleCreateClub}>
                         <div className='mb-3'>
                             <div className="mb-2 block">
                                 <Label
@@ -70,9 +72,16 @@ const CreateClubPage = () => {
                                 onChange={(e) => setDescription(e.target.value)}
                             />
                         </div>
-                        <Button type="submit" onClick={handleCreateClub}>
-                            Create TokenClub
-                        </Button>
+                        {
+                            creating ?
+                                <Button isProcessing={true} disabled>
+                                    Creating a TokenClub
+                                </Button> :
+                                <Button type="submit">
+                                    Create TokenClub
+                                </Button>
+                        }
+
                     </form>
                 </Card>
             </div>

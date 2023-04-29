@@ -2,11 +2,11 @@
 
 import DataLoading from '@/components/DataLoading'
 import EtherscanAddress from '@/components/EtherscanAddress';
-import SpadActions from '@/components/SpadActions';
+import SpadActions from '@/components/spad/SpadActions';
 import WalletContext from '@/context/WalletContext';
 import { formatUSDC } from '@/helpers/helpers';
 import { getSpadDetails } from '@/helpers/tokenClub'
-import { Button, Card, Label, TextInput } from 'flowbite-react';
+import { Button, Card, Label, Progress, TextInput } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 
@@ -18,11 +18,14 @@ const SpadPage = ({ params }) => {
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
     const [submiting, setSubmiting] = useState(false)
+    const [currentInvestment, setCurrentInvestment] = useState(0) 
 
     const loadSpad = async () => {
         setLoading(true);
         const data = await getSpadDetails(address, clubAddress, spadId, password);
         setSpad(data);
+        const investmentPct = (data.currentInvestment * 100 / data.target)
+        setCurrentInvestment(investmentPct);
         setLoading(false);
     }
 
@@ -109,6 +112,17 @@ const SpadPage = ({ params }) => {
                             <div className='inline hover:text-blue-700'>
                                 <EtherscanAddress address={spad?.externalToken} text={`${spad.token.name} (${spad.token.symbol})`} icon={true}/>
                             </div>
+                        </div>
+                        <div className='max-w-md mx-auto mb-10'>
+                            <Progress
+                                progress={currentInvestment}
+                                labelProgress={true}
+                                progressLabelPosition="inside"
+                                textLabel="Current Investment"
+                                labelText={true}
+                                textLabelPosition="outside"
+                                size="lg"
+                            />
                         </div>
                         <SpadActions clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad}  />
                         </> }

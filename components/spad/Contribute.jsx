@@ -53,7 +53,7 @@ const Contribute = ({ address, clubAddress, spadId, spad, loadSpad, contribution
                 />
                 {
                     contributing ?
-                    <Button isProcessing={true}>Contributing</Button> :
+                    <Button isProcessing={true} disabled>Contributing</Button> :
                     <Button type='submit' onClick={handleContribution}>Contribute</Button>
                 }
                 

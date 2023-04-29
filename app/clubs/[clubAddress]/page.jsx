@@ -1,11 +1,10 @@
 "use client";
 
-import CreateSpad from '@/components/CreateSpad';
 import DataLoading from '@/components/DataLoading';
 import EtherscanAddress from '@/components/EtherscanAddress';
-import SpadCard from '@/components/SpadCard';
+import CreateSpad from '@/components/spad/CreateSpad';
+import SpadCard from '@/components/spad/SpadCard';
 import { getClubData } from '@/helpers/tokenClub';
-import { Badge, Button } from 'flowbite-react';
 import React, { useEffect, useState } from 'react'
 
 const TokenClubPage = ({ params }) => {

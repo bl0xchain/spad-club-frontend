@@ -3,7 +3,7 @@ import web3 from "./web3";
 const factoryAbi = require("../helpers/abis/token-club-factory.json")
 const clubAbi = require("../helpers/abis/token-club.json")
 const tokenAbi = require("../helpers/abis/custom-token.json")
-export const factoryAddress = "0xA8410aB563838c7329faE8621214d0e62c645d9c"
+export const factoryAddress = "0xc9D38b29eD93447D4920e304Df5f5834cF8A1Bdf"
 export const usdcAddress = "0xd9037B8A07Ec697014E8c94c52Cb41f67132B4a8";
 export const factoryContract = new web3.eth.Contract(factoryAbi, factoryAddress)
 export const usdcContract = new web3.eth.Contract(tokenAbi, usdcAddress)
@@ -25,7 +25,6 @@ export const createTokenClub = async(address, name, description) => {
             from: address,
             value: 0
         })
-        console.log(response);
         return {
             code: 200,
             data: response
@@ -76,7 +75,6 @@ export const createSpad = async(address, clubAddress, name, description, passwor
             from: address,
             value: 0
         })
-        console.log(response);
         return {
             code: 200,
             data: response
@@ -133,22 +131,88 @@ export const getContribution = async(address, clubAddress, spadId) => {
 export const contribute = async(address, clubAddress, spadId, password, amount) => {
     if (!window.ethereum || address === null || address === "") {
         return {
-            status: "Connect your Metamask wallet to Create a SPAD.",
+            status: "Connect your Metamask wallet to contribute to the SPAD.",
             code: 403
         };
     }
-    console.log(address)
-    console.log(clubAddress)
-    console.log(amount)
-
     const clubContract = getClubContract(clubAddress);
     try {
         const approvalResponse = await usdcContract.methods.approve(clubAddress, web3.utils.toWei(amount, 'mwei')).send({
             from: address,
             value: 0
         })
-        console.log(approvalResponse)
         const response = await clubContract.methods.contribute(spadId, password, web3.utils.toWei(amount, 'mwei')).send({
+            from: address,
+            value: 0
+        })
+        return {
+            code: 200,
+            data: response
+        }
+    } catch (error) {
+        return {
+            status: "Error while contribution",
+            code: 400
+        }
+    }
+}
+
+export const claimTarget = async(address, clubAddress, spadId, externalToken, amount) => {
+    if (!window.ethereum || address === null || address === "") {
+        return {
+            status: "Connect your Metamask wallet to claim target.",
+            code: 403
+        };
+    }
+    const clubContract = getClubContract(clubAddress);
+    const tokenContract = new web3.eth.Contract(tokenAbi, externalToken)
+    const tokenAmount = web3.utils.toWei(amount, 'ether');
+    try {
+        const approvalResponse = await tokenContract.methods.approve(clubAddress, tokenAmount).send({
+            from: address,
+            value: 0
+        })
+        const response = await clubContract.methods.claimTarget(spadId, tokenAmount).send({
+            from: address,
+            value: 0
+        })
+        return {
+            code: 200,
+            data: response
+        }
+    } catch (error) {
+        return {
+            status: "Error while claiming target",
+            code: 400
+        }
+    }
+}
+
+export const getAllowance = async(address, clubAddress, tokenAddress) => {
+    const tokenContract = new web3.eth.Contract(tokenAbi, tokenAddress)
+    const amount = await tokenContract.methods.allowance(address, clubAddress).call();
+    console.log(amount);
+    return amount;
+}
+
+export const isInvestmentClaimed = async(address, clubAddress, spadId) => {
+    const clubContract = getClubContract(clubAddress);
+    const isClaimed = await clubContract.methods.isInvestmentClaimed(spadId).call({
+        from: address
+    })
+    return isClaimed;
+}
+
+export const claimInvestment = async(address, clubAddress, spadId) => {
+    if (!window.ethereum || address === null || address === "") {
+        return {
+            status: "Connect your Metamask wallet to claim investment.",
+            code: 403
+        };
+    }
+    const clubContract = getClubContract(clubAddress);
+    try {
+        const response = await clubContract.methods.claimInvestment(spadId).send({
             from: address,
             value: 0
         })
@@ -160,7 +224,7 @@ export const contribute = async(address, clubAddress, spadId, password, amount) 
     } catch (error) {
         console.log(error)
         return {
-            status: "Error while contribution",
+            status: "Error while claiming investment",
             code: 400
         }
     }
