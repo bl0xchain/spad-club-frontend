@@ -1,0 +1,124 @@
+[{
+        "inputs": [{
+            "internalType": "address",
+            "name": "_tokenClubTemplate",
+            "type": "address"
+        }],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "internalType": "address",
+            "name": "proxy",
+            "type": "address"
+        }],
+        "name": "ProxyCreated",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": false,
+                "internalType": "address",
+                "name": "creator",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "tokenClub",
+                "type": "address"
+            }
+        ],
+        "name": "TokenClubCreated",
+        "type": "event"
+    },
+    {
+        "inputs": [{
+                "internalType": "address",
+                "name": "contributor",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "spadId",
+                "type": "uint256"
+            }
+        ],
+        "name": "addContribution",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "string",
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_description",
+                "type": "string"
+            }
+        ],
+        "name": "createTokenClub",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "address",
+                "name": "_logic",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes",
+                "name": "_data",
+                "type": "bytes"
+            }
+        ],
+        "name": "deployMinimal",
+        "outputs": [{
+            "internalType": "address",
+            "name": "proxy",
+            "type": "address"
+        }],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "_tokenClubAddress",
+            "type": "address"
+        }],
+        "name": "isValidTokenClub",
+        "outputs": [{
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "name": "tokenClubs",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]
