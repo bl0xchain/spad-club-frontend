@@ -3,7 +3,7 @@ import web3 from "./web3";
 const factoryAbi = require("../helpers/abis/token-club-factory.json")
 const clubAbi = require("../helpers/abis/token-club.json")
 const tokenAbi = require("../helpers/abis/custom-token.json")
-export const factoryAddress = "0xc9D38b29eD93447D4920e304Df5f5834cF8A1Bdf"
+export const factoryAddress = "0x46cBD40e17c43dCbdAb2A5b9C4D105413FD1353b"
 export const usdcAddress = "0xd9037B8A07Ec697014E8c94c52Cb41f67132B4a8";
 export const factoryContract = new web3.eth.Contract(factoryAbi, factoryAddress)
 export const usdcContract = new web3.eth.Contract(tokenAbi, usdcAddress)
@@ -157,22 +157,21 @@ export const contribute = async(address, clubAddress, spadId, password, amount) 
     }
 }
 
-export const claimTarget = async(address, clubAddress, spadId, externalToken, amount) => {
+export const addTokensForDistribution = async(address, clubAddress, spadId, externalToken, amount, distributionAmount) => {
     if (!window.ethereum || address === null || address === "") {
         return {
-            status: "Connect your Metamask wallet to claim target.",
+            status: "Connect your Metamask wallet to add distribution tokens.",
             code: 403
         };
     }
     const clubContract = getClubContract(clubAddress);
     const tokenContract = new web3.eth.Contract(tokenAbi, externalToken)
-    const tokenAmount = web3.utils.toWei(amount, 'ether');
     try {
-        const approvalResponse = await tokenContract.methods.approve(clubAddress, tokenAmount).send({
+        const approvalResponse = await tokenContract.methods.approve(clubAddress, web3.utils.toWei(distributionAmount, 'ether')).send({
             from: address,
             value: 0
         })
-        const response = await clubContract.methods.claimTarget(spadId, tokenAmount).send({
+        const response = await clubContract.methods.addTokensForDistribution(spadId, web3.utils.toWei(amount, 'ether')).send({
             from: address,
             value: 0
         })
@@ -182,7 +181,7 @@ export const claimTarget = async(address, clubAddress, spadId, externalToken, am
         }
     } catch (error) {
         return {
-            status: "Error while claiming target",
+            status: "Error while adding distribution tokens",
             code: 400
         }
     }

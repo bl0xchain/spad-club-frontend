@@ -4,16 +4,16 @@ import { Button, TextInput } from 'flowbite-react'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
-const Contribute = ({ address, clubAddress, spadId, spad, loadSpad, contribution }) => {
+const Contribute = ({ address, clubAddress, spadId, spad, loadSpad, contribution, password }) => {
     const [show, setShow] = useState(false)
     const [amount, setAmount] = useState("")
-    const [password, setPassword] = useState("")
+    // const [password, setPassword] = useState("")
     const [contributing, setContributing] = useState(false)
 
     const handleContribution = async(e) => {
         e.preventDefault();
-        if(amount == "" || password == "") {
-            toast.error("Please enter amount and password")
+        if(amount == "") {
+            toast.error("Please enter amount")
             return false;
         }
         setContributing(true);
@@ -44,21 +44,21 @@ const Contribute = ({ address, clubAddress, spadId, spad, loadSpad, contribution
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                 />
-                <TextInput
+                {/* <TextInput
                     type='password'
                     placeholder="Password"
                     required={true}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                />
+                /> */}
                 {
                     contributing ?
-                    <Button isProcessing={true} disabled>Contributing</Button> :
-                    <Button type='submit' onClick={handleContribution}>Contribute</Button>
+                    <Button isProcessing={true} disabled pill={true} className='button-color'>Contributing</Button> :
+                    <Button type='submit' onClick={handleContribution} pill={true} className='button-color'>Contribute</Button>
                 }
                 
             </form> :
-            <Button onClick={()=>setShow(true)}>Contribute</Button>
+            <Button onClick={()=>setShow(true)} pill={true} className='button-color'>Contribute</Button>
 
         }
             

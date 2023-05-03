@@ -5,7 +5,7 @@ import { FaDiscord, FaEnvelope, FaGithub, FaTwitter } from "react-icons/fa"
 
 const SiteFooter = () => {
     return (
-        <Footer container={true}>
+        <Footer container={true} className="rounded-none">
             <Footer.Copyright
                 href="/"
                 by="TokenClub™"

@@ -78,10 +78,10 @@ const SpadPage = ({ params }) => {
                         Clubs
                     </Breadcrumb.Item>
                     <Breadcrumb.Item href={`/clubs/${clubAddress}`}>
-                        { club.name }
+                        {club.name}
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
-                        { spad?.spadName ? spad.spadName : "SPAD" }
+                        {spad?.spadName ? spad.spadName : "SPAD"}
                     </Breadcrumb.Item>
                 </Breadcrumb>
             }
@@ -103,10 +103,10 @@ const SpadPage = ({ params }) => {
                                 </div>
                                 {
                                     submiting ?
-                                        <Button isProcessing={true}>
+                                        <Button isProcessing={true} pill={true} className='button-color'>
                                             Submiting
                                         </Button> :
-                                        <Button type='submit' onClick={handlePasswordSubmit}>
+                                        <Button type='submit' onClick={handlePasswordSubmit} pill={true} className='button-color'>
                                             Submit
                                         </Button>
                                 }
@@ -156,7 +156,10 @@ const SpadPage = ({ params }) => {
                                 size="lg"
                             />
                         </div>
-                        <SpadActions clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad} creator={club.creator} />
+                        {
+                            club &&
+                            <SpadActions clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad} creator={club.creator} password={password} />
+                        }
                     </>}
                     </>
             }

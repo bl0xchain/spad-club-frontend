@@ -3,10 +3,11 @@ import { Button, Label, TextInput } from 'flowbite-react'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
-const ClaimTarget = ({ address, clubAddress, spadId, spad, loadSpad }) => {
+const TokensForDistribution = ({ address, clubAddress, spadId, spad, loadSpad }) => {
     const [show, setShow] = useState(false)
     const [amount, setAmount] = useState("")
     const [claiming, setClaiming] = useState(false)
+    const [distributionAmount, setDistributionAmount] = useState(0)
 
     const handleClaimTarget = async (e) => {
         e.preventDefault();
@@ -16,7 +17,7 @@ const ClaimTarget = ({ address, clubAddress, spadId, spad, loadSpad }) => {
         }
 
         setClaiming(true);
-        const response = await claimTarget(address, clubAddress, spadId, spad.externalToken, amount);
+        const response = await addTokensForDistribution(address, clubAddress, spadId, spad.externalToken, amount);
         if (response.code == 200) {
             toast.success("Target Claimed successfully");
             loadSpad();
@@ -27,6 +28,12 @@ const ClaimTarget = ({ address, clubAddress, spadId, spad, loadSpad }) => {
         setShow(false);
         setClaiming(false);
 
+    }
+
+    const calculateDistributionAmount = (amount) => {
+        setAmount(amount);
+        const distAmt = spad.target * amount * (100 - spad.carry) / (spad.valuation * 100)
+        setDistributionAmount(distAmt);
     }
 
     // useEffect(() => {
@@ -48,7 +55,7 @@ const ClaimTarget = ({ address, clubAddress, spadId, spad, loadSpad }) => {
                             <div className="mb-2 block">
                                 <Label
                                     htmlFor="amount"
-                                    value="External Token amount for distribution"
+                                    value="Total Token Supply"
                                 />
                             </div>
                             <TextInput
@@ -57,23 +64,25 @@ const ClaimTarget = ({ address, clubAddress, spadId, spad, loadSpad }) => {
                                 placeholder="Enter token amount"
                                 required={true}
                                 value={amount}
-                                onChange={(e)=>setAmount(e.target.value)}
+                                onChange={(e)=>calculateDistributionAmount(e.target.value)}
                             />
+                            <p className='mt-3 text-sm text-blue-700'>Based on the valuation, you need to distribute { spad.target * 100 / spad.valuation }% tokens to the contributors minus {spad.carry}% to you.</p>
+                            <p className='mt-3 text-blue-700'>You need to transfer { distributionAmount } {spad.spadName} tokens for distribution</p>
                         </div>
                         {
                             claiming ?
                                 <Button isProcessing={true} disabled>
-                                    Claiming Target
+                                    Adding distribution tokens
                                 </Button> :
                                 <Button type="submit">
-                                    Claim Target
+                                    Add distribution tokens
                                 </Button>
                         }
                     </form> :
-                    <Button onClick={() => setShow(true)}>Claim Target</Button>
+                    <Button onClick={() => setShow(true)}>Add distribution tokens</Button>
             }
         </div>
     )
 }
 
-export default ClaimTarget
+export default TokensForDistribution

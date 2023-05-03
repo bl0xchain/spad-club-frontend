@@ -27,7 +27,7 @@ const WalletConnect = () => {
         <>
         {
             status == "CONNECTED" ?
-            <Badge color="success" size="lg" style={{fontWeight: 'normal', lineHeight:'38px'}}>{getShortAddress(address)}</Badge> :
+            <Badge color="success" size="lg" style={{fontWeight: 'normal', lineHeight:'42px'}}>{getShortAddress(address)}</Badge> :
             <>
             {
                 status == "INVALID_CHAIN" ?
@@ -39,11 +39,11 @@ const WalletConnect = () => {
                 <>
                 {
                     status == "NOT_CONNECTED" ?
-                    <Button onClick={connectWallet}>
+                    <Button onClick={connectWallet} pill={true} className='button-color'>
                         Connect Wallet
                     </Button> :
                     <>
-                    <Button onClick={() => setVisible(true)}>
+                    <Button onClick={() => setVisible(true)} pill={true} className='button-color'>
                         Connect Wallet
                     </Button>
                     <Modal

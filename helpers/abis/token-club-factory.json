@@ -92,6 +92,32 @@
         "type": "function"
     },
     {
+        "inputs": [],
+        "name": "getClubs",
+        "outputs": [{
+            "internalType": "address[]",
+            "name": "",
+            "type": "address[]"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "clubAddress",
+            "type": "address"
+        }],
+        "name": "getSpads",
+        "outputs": [{
+            "internalType": "uint256[]",
+            "name": "",
+            "type": "uint256[]"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
         "inputs": [{
             "internalType": "address",
             "name": "_tokenClubAddress",

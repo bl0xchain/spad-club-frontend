@@ -65,7 +65,7 @@ const CreateSpad = ({ clubAddress, loadClub, creator }) => {
 
     return (
         <div>
-            <Button onClick={()=>setShow(true)}>Create SPAD</Button>
+            <Button onClick={()=>setShow(true)} pill={true} className='button-color'>Create SPAD</Button>
             <Modal
                 show={show}
                 size="lg"
@@ -236,15 +236,15 @@ const CreateSpad = ({ clubAddress, loadClub, creator }) => {
                         <div className='pt-4 flex gap-4'>
                             {
                                 creating ?
-                                <Button isProcessing={true} disabled>
+                                <Button isProcessing={true} disabled pill={true} className='button-color'>
                                     Creating a SPAD
                                 </Button> :
-                                <Button type="submit" onClick={handleCreateSpad}>
+                                <Button type="submit" onClick={handleCreateSpad} pill={true} className='button-color'>
                                     Create SPAD
                                 </Button>
                             }
                             
-                            <Button color="gray" onClick={handleClose}>
+                            <Button color="gray" onClick={handleClose} pill={true}>
                                 Cancel
                             </Button>
                         </div>

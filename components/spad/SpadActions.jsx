@@ -3,10 +3,12 @@ import { formatUSDC } from '@/helpers/helpers';
 import { getContribution } from '@/helpers/tokenClub';
 import React, { useContext, useEffect, useState } from 'react'
 import Contribute from './Contribute';
-import ClaimTarget from './ClaimTarget';
+import TokensForDistribution from './TokensForDistribution';
 import ClaimInvestment from './ClaimInvestment';
+import EtherscanAddress from '../EtherscanAddress';
+import { Button } from 'flowbite-react';
 
-const SpadActions = ({ clubAddress, spadId, spad, loadSpad, creator }) => {
+const SpadActions = ({ clubAddress, spadId, spad, loadSpad, creator, password }) => {
     const { address } = useContext(WalletContext)
     const [contribution, setContribution] = useState(0);
 
@@ -27,7 +29,7 @@ const SpadActions = ({ clubAddress, spadId, spad, loadSpad, creator }) => {
                 <>
                 {
                     parseInt(spad.maxInvestment) > parseInt(contribution) &&
-                    <Contribute address={address} clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad} contribution={contribution} />
+                    <Contribute address={address} clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad} contribution={contribution} password={password} />
                 }
                 </> :
                 <>
@@ -37,8 +39,11 @@ const SpadActions = ({ clubAddress, spadId, spad, loadSpad, creator }) => {
                     <>
                     {
                         address == creator ?
-                        <ClaimTarget address={address} clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad} /> :
-                        <p className='font-semibold text-lg text-orange-400'>Target is not yet claimed</p>
+                        <TokensForDistribution address={address} clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad} /> :
+                        <>
+                            <p className='font-semibold text-lg text-orange-400 mb-4'>Tokens not yet deposited by SpadClub creator (<EtherscanAddress address={creator} />)</p>
+                            <Button disabled>Claim Investment</Button>
+                        </>
                     }
                         
                     </>

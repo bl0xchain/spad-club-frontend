@@ -74,10 +74,10 @@ const CreateClubPage = () => {
                         </div>
                         {
                             creating ?
-                                <Button isProcessing={true} disabled>
+                                <Button isProcessing={true} disabled  pill={true} className='button-color'>
                                     Creating a TokenClub
                                 </Button> :
-                                <Button type="submit">
+                                <Button type="submit" pill={true} className='button-color'>
                                     Create TokenClub
                                 </Button>
                         }
