@@ -39,6 +39,11 @@ nav, footer {
   color: #333;
 }
 
+.progress-color div {
+  background: linear-gradient(270deg,#653eb2,#8f55cc 34%,#f28585);
+  color: #FFF;
+}
+
 .button-color span {
   justify-content: center;
 }

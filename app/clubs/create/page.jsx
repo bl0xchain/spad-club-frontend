@@ -24,7 +24,7 @@ const CreateClubPage = () => {
         setCreating(true)
         const response = await createTokenClub(address, name, description);
         if (response.code == 200) {
-            toast.success("TokenClub is created");
+            toast.success("SpadClub is created");
             router.push(`/clubs/${response.data.events.TokenClubCreated.returnValues.tokenClub}`)
         } else {
             toast.error(response?.status)
@@ -37,20 +37,20 @@ const CreateClubPage = () => {
             <div className="max-w-sm" style={{ margin: "0 auto" }}>
                 <Card>
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                        Create a TokenClub
+                        Create a SpadClub
                     </h5>
                     <form className="flex flex-col gap-4" onSubmit={handleCreateClub}>
                         <div className='mb-3'>
                             <div className="mb-2 block">
                                 <Label
                                     htmlFor="name"
-                                    value="TokenClub Name"
+                                    value="SpadClub Name"
                                 />
                             </div>
                             <TextInput
                                 id="name"
                                 type="text"
-                                placeholder="TokenClub Name"
+                                placeholder="SpadClub Name"
                                 required={true}
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
@@ -60,12 +60,12 @@ const CreateClubPage = () => {
                             <div className="mb-2 block">
                                 <Label
                                     htmlFor="description"
-                                    value="TokenClub Description"
+                                    value="SpadClub Description"
                                 />
                             </div>
                             <Textarea
                                 id="description"
-                                placeholder="TokenClub Description"
+                                placeholder="SpadClub Description"
                                 required={true}
                                 rows={4}
                                 value={description}
@@ -75,10 +75,10 @@ const CreateClubPage = () => {
                         {
                             creating ?
                                 <Button isProcessing={true} disabled  pill={true} className='button-color'>
-                                    Creating a TokenClub
+                                    Creating a SpadClub
                                 </Button> :
                                 <Button type="submit" pill={true} className='button-color'>
-                                    Create TokenClub
+                                    Create SpadClub
                                 </Button>
                         }
 

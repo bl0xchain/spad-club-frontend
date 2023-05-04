@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 
 const Header = () => {
     const pathname = usePathname();
-    console.log(pathname);
     return (
         <Navbar
             fluid={false}
@@ -22,16 +21,16 @@ const Header = () => {
                 <Navbar.Toggle />
             </div>
             <Navbar.Collapse>
-                <Navbar.Link href="/about" className={pathname === '/about' ? 'text-color' : ''}>
+                <Navbar.Link href="/about" className={pathname === '/about' ? 'text-color text-lg' : 'text-lg'}>
                     About
                 </Navbar.Link>
-                <Navbar.Link href="/clubs" className={pathname === '/clubs' ? 'text-color' : ''}>
+                <Navbar.Link href="/clubs" className={pathname === '/clubs' ? 'text-color text-lg' : 'text-lg'}>
                     Clubs
                 </Navbar.Link>
-                <Navbar.Link href="/clubs/create" className={pathname === '/clubs/create' ? 'text-color' : ''}>
+                <Navbar.Link href="/clubs/create" className={pathname === '/clubs/create' ? 'text-color text-lg' : 'text-lg'}>
                     Create Club
                 </Navbar.Link>
-                <Navbar.Link href="/contact" className={pathname === '/contact' ? 'text-color' : ''}>
+                <Navbar.Link href="/contact" className={pathname === '/contact' ? 'text-color text-lg' : 'text-lg'}>
                     Contact
                 </Navbar.Link>
             </Navbar.Collapse>

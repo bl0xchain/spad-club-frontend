@@ -3,7 +3,7 @@ import web3 from "./web3";
 const factoryAbi = require("../helpers/abis/token-club-factory.json")
 const clubAbi = require("../helpers/abis/token-club.json")
 const tokenAbi = require("../helpers/abis/custom-token.json")
-export const factoryAddress = "0x46cBD40e17c43dCbdAb2A5b9C4D105413FD1353b"
+export const factoryAddress = "0x8DF563004df853a5575679950e59369B169D8EBD"
 export const usdcAddress = "0xd9037B8A07Ec697014E8c94c52Cb41f67132B4a8";
 export const factoryContract = new web3.eth.Contract(factoryAbi, factoryAddress)
 export const usdcContract = new web3.eth.Contract(tokenAbi, usdcAddress)
@@ -167,7 +167,7 @@ export const addTokensForDistribution = async(address, clubAddress, spadId, exte
     const clubContract = getClubContract(clubAddress);
     const tokenContract = new web3.eth.Contract(tokenAbi, externalToken)
     try {
-        const approvalResponse = await tokenContract.methods.approve(clubAddress, web3.utils.toWei(distributionAmount, 'ether')).send({
+        const approvalResponse = await tokenContract.methods.approve(clubAddress, web3.utils.toWei(distributionAmount.toString(), 'ether')).send({
             from: address,
             value: 0
         })
@@ -180,6 +180,7 @@ export const addTokensForDistribution = async(address, clubAddress, spadId, exte
             data: response
         }
     } catch (error) {
+        console.log(error)
         return {
             status: "Error while adding distribution tokens",
             code: 400

@@ -13,6 +13,10 @@ export const formatUSDC = (amount) => {
     return web3.utils.fromWei(amount.toString(), 'mwei')
 }
 
+export const formatEther = (amount) => {
+    return web3.utils.fromWei(amount.toString(), 'ether')
+}
+
 export const getExcerpt = (text, size = 150) => {
     if (text.length > size) {
         return text.substring(0, size) + "...";

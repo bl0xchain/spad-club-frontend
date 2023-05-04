@@ -4,7 +4,7 @@ import DataLoading from '@/components/DataLoading'
 import EtherscanAddress from '@/components/EtherscanAddress';
 import SpadActions from '@/components/spad/SpadActions';
 import WalletContext from '@/context/WalletContext';
-import { formatUSDC } from '@/helpers/helpers';
+import { formatEther, formatUSDC } from '@/helpers/helpers';
 import { getClubData, getSpadDetails } from '@/helpers/tokenClub'
 import { Breadcrumb, Button, Card, Progress, TextInput } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react'
@@ -32,7 +32,7 @@ const SpadPage = ({ params }) => {
         setLoading(true);
         const data = await getSpadDetails(address, clubAddress, spadId, password);
         setSpad(data);
-        const investmentPct = (data.currentInvestment * 100 / data.target)
+        const investmentPct = (parseInt(data.currentInvestment) * 100 / parseInt(data.target))
         setCurrentInvestment(investmentPct);
         setLoading(false);
     }
@@ -42,6 +42,8 @@ const SpadPage = ({ params }) => {
         setSubmiting(true)
         const data = await getSpadDetails(address, clubAddress, spadId, password);
         setSpad(data);
+        const investmentPct = (parseInt(data.currentInvestment) * 100 / parseInt(data.target))
+        setCurrentInvestment(investmentPct);
         if (data.error) {
             toast.error("Invalid Password. Please try again.")
         }
@@ -154,6 +156,7 @@ const SpadPage = ({ params }) => {
                                 labelText={true}
                                 textLabelPosition="outside"
                                 size="lg"
+                                className='progress-color'
                             />
                         </div>
                         {

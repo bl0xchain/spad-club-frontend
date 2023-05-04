@@ -34,15 +34,15 @@ const SpadActions = ({ clubAddress, spadId, spad, loadSpad, creator, password })
                 </> :
                 <>
                 {
-                    spad.targetClaimed ?
-                    <ClaimInvestment address={address} clubAddress={clubAddress} spadId={spadId} contribution={contribution} /> :
+                    spad.externalTokenAdded ?
+                    <ClaimInvestment address={address} clubAddress={clubAddress} spadId={spadId} contribution={contribution} spad={spad} /> :
                     <>
                     {
                         address == creator ?
                         <TokensForDistribution address={address} clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad} /> :
                         <>
                             <p className='font-semibold text-lg text-orange-400 mb-4'>Tokens not yet deposited by SpadClub creator (<EtherscanAddress address={creator} />)</p>
-                            <Button disabled>Claim Investment</Button>
+                            <Button disabled pill={true} className='button-color'>Claim Investment</Button>
                         </>
                     }
                         

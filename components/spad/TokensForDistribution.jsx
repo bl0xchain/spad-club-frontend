@@ -1,4 +1,4 @@
-import { claimTarget, getAllowance } from '@/helpers/tokenClub'
+import { addTokensForDistribution, getAllowance } from '@/helpers/tokenClub'
 import { Button, Label, TextInput } from 'flowbite-react'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
@@ -17,9 +17,9 @@ const TokensForDistribution = ({ address, clubAddress, spadId, spad, loadSpad })
         }
 
         setClaiming(true);
-        const response = await addTokensForDistribution(address, clubAddress, spadId, spad.externalToken, amount);
+        const response = await addTokensForDistribution(address, clubAddress, spadId, spad.externalToken, amount, distributionAmount);
         if (response.code == 200) {
-            toast.success("Target Claimed successfully");
+            toast.success("Distribution tokens added successfully");
             loadSpad();
 
         } else {
@@ -71,15 +71,15 @@ const TokensForDistribution = ({ address, clubAddress, spadId, spad, loadSpad })
                         </div>
                         {
                             claiming ?
-                                <Button isProcessing={true} disabled>
+                                <Button isProcessing={true} disabled pill={true} className='button-color'>
                                     Adding distribution tokens
                                 </Button> :
-                                <Button type="submit">
+                                <Button type="submit" pill={true} className='button-color'>
                                     Add distribution tokens
                                 </Button>
                         }
                     </form> :
-                    <Button onClick={() => setShow(true)}>Add distribution tokens</Button>
+                    <Button onClick={() => setShow(true)} pill={true} className='button-color'>Add distribution tokens</Button>
             }
         </div>
     )

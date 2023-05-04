@@ -209,6 +209,11 @@
             },
             {
                 "internalType": "uint256",
+                "name": "externalTokenAmount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
                 "name": "valuation",
                 "type": "uint256"
             },
