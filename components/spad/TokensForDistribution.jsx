@@ -1,7 +1,8 @@
-import { addTokensForDistribution, getAllowance } from '@/helpers/tokenClub'
-import { Button, Label, TextInput } from 'flowbite-react'
-import React, { useEffect, useState } from 'react'
+import { addTokensForDistribution } from '@/helpers/spadClub'
+import React, { useState } from 'react'
 import { toast } from 'react-toastify'
+import TextInput from '../template/TextInput'
+import Button from '../template/Button'
 
 const TokensForDistribution = ({ address, clubAddress, spadId, spad, loadSpad }) => {
     const [show, setShow] = useState(false)
@@ -36,28 +37,15 @@ const TokensForDistribution = ({ address, clubAddress, spadId, spad, loadSpad })
         setDistributionAmount(distAmt);
     }
 
-    // useEffect(() => {
-    //     const loadAllowance = async() => {
-    //         const allowance = await getAllowance(address, clubAddress, externalToken);
-    //         console.log(allowance)
-    //     }
-    //     if(address) {
-    //         loadAllowance()
-    //     }
-    // }, [address])
-
     return (
         <div>
             {
                 show ?
                     <form className="flex flex-col gap-6 max-w-md mx-auto" onSubmit={handleClaimTarget}>
                         <div>
-                            <div className="mb-2 block">
-                                <Label
-                                    htmlFor="amount"
-                                    value="Total Token Supply"
-                                />
-                            </div>
+                            <label className="mb-2 block" htmlFor="amount">
+                                Total Token Supply"
+                            </label>
                             <TextInput
                                 id="amount"
                                 type="number"
@@ -71,15 +59,15 @@ const TokensForDistribution = ({ address, clubAddress, spadId, spad, loadSpad })
                         </div>
                         {
                             claiming ?
-                                <Button isProcessing={true} disabled pill={true} className='button-color'>
+                                <Button isProcessing={true} disabled>
                                     Adding distribution tokens
                                 </Button> :
-                                <Button type="submit" pill={true} className='button-color'>
+                                <Button type="submit">
                                     Add distribution tokens
                                 </Button>
                         }
                     </form> :
-                    <Button onClick={() => setShow(true)} pill={true} className='button-color'>Add distribution tokens</Button>
+                    <Button onClick={() => setShow(true)}>Add distribution tokens</Button>
             }
         </div>
     )

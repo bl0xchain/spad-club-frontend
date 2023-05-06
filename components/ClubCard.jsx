@@ -1,9 +1,9 @@
-import { getClubData } from '@/helpers/tokenClub'
-import { Card } from 'flowbite-react'
 import React, { useEffect, useState } from 'react'
-import DataLoading from './DataLoading'
-import EtherscanAddress from './EtherscanAddress'
 import { getExcerpt } from '@/helpers/helpers'
+import { getClubData } from '@/helpers/spadClub'
+import Card from './template/Card'
+import DataLoading from './layout/DataLoading'
+import EtherscanAddress from './layout/EtherscanAddress'
 
 const ClubCard = ({ clubAddress }) => {
     const [club, setClub] = useState([])

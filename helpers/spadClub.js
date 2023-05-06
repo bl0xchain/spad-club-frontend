@@ -1,10 +1,10 @@
 import web3 from "./web3";
 
-const factoryAbi = require("../helpers/abis/token-club-factory.json")
-const clubAbi = require("../helpers/abis/token-club.json")
+const factoryAbi = require("../helpers/abis/spad-club-factory.json")
+const clubAbi = require("../helpers/abis/spad-club.json")
 const tokenAbi = require("../helpers/abis/custom-token.json")
-export const factoryAddress = "0x8DF563004df853a5575679950e59369B169D8EBD"
-export const usdcAddress = "0xd9037B8A07Ec697014E8c94c52Cb41f67132B4a8";
+export const factoryAddress = "0x7c47218ef2ccd72eEE1bda89eE1Af17E1e85626c"
+export const usdcAddress = "0x40Bf6C107CAb17181ec2Aa2959BEE028b4698ee1";
 export const factoryContract = new web3.eth.Contract(factoryAbi, factoryAddress)
 export const usdcContract = new web3.eth.Contract(tokenAbi, usdcAddress)
 
@@ -12,7 +12,7 @@ const getClubContract = (clubAddress) => {
     return new web3.eth.Contract(clubAbi, clubAddress)
 }
 
-export const createTokenClub = async(address, name, description) => {
+export const createSpadClub = async(address, name, description) => {
     if (!window.ethereum || address === null || address === "") {
         return {
             status: "Connect your Metamask wallet to Create a Club.",
@@ -21,7 +21,7 @@ export const createTokenClub = async(address, name, description) => {
     }
 
     try {
-        const response = await factoryContract.methods.createTokenClub(name, description).send({
+        const response = await factoryContract.methods.createSpadClub(name, description).send({
             from: address,
             value: 0
         })
@@ -31,7 +31,7 @@ export const createTokenClub = async(address, name, description) => {
         }
     } catch (error) {
         return {
-            status: "Error while creating a TokenClub",
+            status: "Error while creating a SpadClub",
             code: 400
         }
     }
@@ -39,13 +39,13 @@ export const createTokenClub = async(address, name, description) => {
 
 export const getClubs = async() => {
     const createdClubs = [];
-    const clubs = await factoryContract.getPastEvents('TokenClubCreated', {
+    const clubs = await factoryContract.getPastEvents('SpadClubCreated', {
         filter: { },
         fromBlock: 0,
         toBlock: 'latest'
     })
     clubs.forEach((event) => {
-        createdClubs.push(event.returnValues.tokenClub)
+        createdClubs.push(event.returnValues.spadClub)
     })
     return createdClubs.reverse()
 }

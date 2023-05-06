@@ -1,8 +1,11 @@
 "use client";
 
+import Button from '@/components/template/Button';
+import Card from '@/components/template/Card';
+import TextArea from '@/components/template/TextArea';
+import TextInput from '@/components/template/TextInput';
 import WalletContext from '@/context/WalletContext';
-import { createTokenClub } from '@/helpers/tokenClub';
-import { Button, Card, Label, TextInput, Textarea } from 'flowbite-react'
+import { createSpadClub } from '@/helpers/spadClub';
 import { useRouter } from 'next/navigation'
 import React, { useContext, useState } from 'react'
 import { toast } from 'react-toastify';
@@ -22,10 +25,11 @@ const CreateClubPage = () => {
             return;
         }
         setCreating(true)
-        const response = await createTokenClub(address, name, description);
+        const response = await createSpadClub(address, name, description);
+        console.log(response);
         if (response.code == 200) {
             toast.success("SpadClub is created");
-            router.push(`/clubs/${response.data.events.TokenClubCreated.returnValues.tokenClub}`)
+            router.push(`/clubs/${response.data.events.SpadClubCreated.returnValues.spadClub}`)
         } else {
             toast.error(response?.status)
         }
@@ -34,19 +38,14 @@ const CreateClubPage = () => {
 
     return (
         <div>
-            <div className="max-w-sm" style={{ margin: "0 auto" }}>
+            <div className="max-w-sm mx-auto">
                 <Card>
-                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 text-center">
                         Create a SpadClub
                     </h5>
-                    <form className="flex flex-col gap-4" onSubmit={handleCreateClub}>
+                    <form className="flex flex-col gap-4 text-center" onSubmit={handleCreateClub}>
                         <div className='mb-3'>
-                            <div className="mb-2 block">
-                                <Label
-                                    htmlFor="name"
-                                    value="SpadClub Name"
-                                />
-                            </div>
+                            <label htmlFor='name' className='block mb-2'>Name</label>
                             <TextInput
                                 id="name"
                                 type="text"
@@ -57,13 +56,8 @@ const CreateClubPage = () => {
                             />
                         </div>
                         <div className='mb-3'>
-                            <div className="mb-2 block">
-                                <Label
-                                    htmlFor="description"
-                                    value="SpadClub Description"
-                                />
-                            </div>
-                            <Textarea
+                            <label htmlFor='description' className='block mb-2'>Description</label>
+                            <TextArea
                                 id="description"
                                 placeholder="SpadClub Description"
                                 required={true}
@@ -74,10 +68,10 @@ const CreateClubPage = () => {
                         </div>
                         {
                             creating ?
-                                <Button isProcessing={true} disabled  pill={true} className='button-color'>
+                                <Button isProcessing={true} disabled>
                                     Creating a SpadClub
                                 </Button> :
-                                <Button type="submit" pill={true} className='button-color'>
+                                <Button type="submit">
                                     Create SpadClub
                                 </Button>
                         }

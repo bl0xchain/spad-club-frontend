@@ -1,8 +1,8 @@
 import { formatEther, formatUSDC } from '@/helpers/helpers'
-import { claimInvestment, isInvestmentClaimed } from '@/helpers/tokenClub'
-import { Button } from 'flowbite-react'
+import { claimInvestment, isInvestmentClaimed } from '@/helpers/spadClub'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
+import Button from '../template/Button'
 
 const ClaimInvestment = ({ address, clubAddress, spadId, contribution, spad }) => {
     const [claiming, setClaiming] = useState(false)
@@ -49,8 +49,8 @@ const ClaimInvestment = ({ address, clubAddress, spadId, contribution, spad }) =
                 <>
                 {
                     claiming ?
-                    <Button isProcessing={true} disabled pill={true} className='button-color'>Claiming {claimAmount} tokens</Button> :
-                    <Button onClick={handleClaim} pill={true} className='button-color'>Claim {claimAmount} tokens</Button>
+                    <Button isProcessing={true} disabled>Claiming {claimAmount} tokens</Button> :
+                    <Button onClick={handleClaim}>Claim {claimAmount} tokens</Button>
                 }
                 </>
             }

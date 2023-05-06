@@ -1,13 +1,15 @@
 "use client";
 
-import DataLoading from '@/components/DataLoading';
-import EtherscanAddress from '@/components/EtherscanAddress';
+import DataLoading from '@/components/layout/DataLoading';
+import EtherscanAddress from '@/components/layout/EtherscanAddress';
 import CreateSpad from '@/components/spad/CreateSpad';
 import SpadCard from '@/components/spad/SpadCard';
-import { getClubData } from '@/helpers/tokenClub';
+import { getClubData } from '@/helpers/spadClub';
+// import CreateSpad from '@/components/spad/CreateSpad';
+// import SpadCard from '@/components/spad/SpadCard';
 import React, { useEffect, useState } from 'react'
 
-const TokenClubPage = ({ params }) => {
+const SpadClubPage = ({ params }) => {
   const clubAddress = params.clubAddress;
 
   const [club, setClub] = useState(null)
@@ -70,4 +72,4 @@ const TokenClubPage = ({ params }) => {
   )
 }
 
-export default TokenClubPage
+export default SpadClubPage

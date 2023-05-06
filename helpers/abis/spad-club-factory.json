@@ -1,7 +1,7 @@
 [{
         "inputs": [{
             "internalType": "address",
-            "name": "_tokenClubTemplate",
+            "name": "_spadClubTemplate",
             "type": "address"
         }],
         "stateMutability": "nonpayable",
@@ -29,11 +29,11 @@
             {
                 "indexed": false,
                 "internalType": "address",
-                "name": "tokenClub",
+                "name": "spadClub",
                 "type": "address"
             }
         ],
-        "name": "TokenClubCreated",
+        "name": "SpadClubCreated",
         "type": "event"
     },
     {
@@ -65,7 +65,7 @@
                 "type": "string"
             }
         ],
-        "name": "createTokenClub",
+        "name": "createSpadClub",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -120,10 +120,10 @@
     {
         "inputs": [{
             "internalType": "address",
-            "name": "_tokenClubAddress",
+            "name": "_spadClubAddress",
             "type": "address"
         }],
-        "name": "isValidTokenClub",
+        "name": "isValidSpadClub",
         "outputs": [{
             "internalType": "bool",
             "name": "",
@@ -138,7 +138,7 @@
             "name": "",
             "type": "uint256"
         }],
-        "name": "tokenClubs",
+        "name": "spadClubs",
         "outputs": [{
             "internalType": "address",
             "name": "",

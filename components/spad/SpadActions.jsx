@@ -1,12 +1,9 @@
 import WalletContext from '@/context/WalletContext';
 import { formatUSDC } from '@/helpers/helpers';
-import { getContribution } from '@/helpers/tokenClub';
+import { getContribution } from '@/helpers/spadClub';
 import React, { useContext, useEffect, useState } from 'react'
+import Button from '../template/Button';
 import Contribute from './Contribute';
-import TokensForDistribution from './TokensForDistribution';
-import ClaimInvestment from './ClaimInvestment';
-import EtherscanAddress from '../EtherscanAddress';
-import { Button } from 'flowbite-react';
 
 const SpadActions = ({ clubAddress, spadId, spad, loadSpad, creator, password }) => {
     const { address } = useContext(WalletContext)
@@ -34,12 +31,12 @@ const SpadActions = ({ clubAddress, spadId, spad, loadSpad, creator, password })
                 </> :
                 <>
                 {
-                    spad.externalTokenAdded ?
-                    <ClaimInvestment address={address} clubAddress={clubAddress} spadId={spadId} contribution={contribution} spad={spad} /> :
+                    spad.externalTokenAdded ? <></> :
+                    // <ClaimInvestment address={address} clubAddress={clubAddress} spadId={spadId} contribution={contribution} spad={spad} /> :
                     <>
                     {
-                        address == creator ?
-                        <TokensForDistribution address={address} clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad} /> :
+                        address == creator ? <></> :
+                        // <TokensForDistribution address={address} clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad} /> :
                         <>
                             <p className='font-semibold text-lg text-orange-400 mb-4'>Tokens not yet deposited by SpadClub creator (<EtherscanAddress address={creator} />)</p>
                             <Button disabled pill={true} className='button-color'>Claim Investment</Button>

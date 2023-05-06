@@ -1,8 +1,8 @@
-import { Card } from 'flowbite-react'
 import React, { useEffect, useState } from 'react'
-import { getSpadInfo } from '@/helpers/tokenClub'
 import { getExcerpt } from '@/helpers/helpers'
-import DataLoading from '../DataLoading'
+import Card from '../template/Card'
+import DataLoading from '../layout/DataLoading'
+import { getSpadInfo } from '@/helpers/spadClub'
 
 const SpadCard = ({ clubAddress, spadId }) => {
   const [spad, setSpad] = useState(null)

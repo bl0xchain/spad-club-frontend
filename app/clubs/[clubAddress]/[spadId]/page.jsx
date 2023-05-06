@@ -1,12 +1,15 @@
 "use client";
 
-import DataLoading from '@/components/DataLoading'
-import EtherscanAddress from '@/components/EtherscanAddress';
+import DataLoading from '@/components/layout/DataLoading';
+import EtherscanAddress from '@/components/layout/EtherscanAddress';
 import SpadActions from '@/components/spad/SpadActions';
+import Button from '@/components/template/Button';
+import Card from '@/components/template/Card';
+import ProgressBar from '@/components/template/ProgressBar';
+import TextInput from '@/components/template/TextInput';
 import WalletContext from '@/context/WalletContext';
 import { formatEther, formatUSDC } from '@/helpers/helpers';
-import { getClubData, getSpadDetails } from '@/helpers/tokenClub'
-import { Breadcrumb, Button, Card, Progress, TextInput } from 'flowbite-react';
+import { getClubData, getSpadDetails } from '@/helpers/spadClub';
 import React, { useContext, useEffect, useState } from 'react'
 import { FaHome } from 'react-icons/fa';
 import { toast } from 'react-toastify';
@@ -24,7 +27,6 @@ const SpadPage = ({ params }) => {
 
     const loadClub = async () => {
         const data = await getClubData(clubAddress);
-        console.log(data)
         setClub(data);
     }
 
@@ -69,23 +71,7 @@ const SpadPage = ({ params }) => {
         <div className='max-w-4xl' style={{ margin: "0 auto" }}>
             {
                 club &&
-                <Breadcrumb aria-label="SPAD breadcrumb" className='mb-10'>
-                    <Breadcrumb.Item
-                        href="/"
-                        icon={FaHome}
-                    >
-                        Home
-                    </Breadcrumb.Item>
-                    <Breadcrumb.Item href="/clubs">
-                        Clubs
-                    </Breadcrumb.Item>
-                    <Breadcrumb.Item href={`/clubs/${clubAddress}`}>
-                        {club.name}
-                    </Breadcrumb.Item>
-                    <Breadcrumb.Item>
-                        {spad?.spadName ? spad.spadName : "SPAD"}
-                    </Breadcrumb.Item>
-                </Breadcrumb>
+                <></>
             }
             {
                 address == "" || spad?.error ?
@@ -105,10 +91,10 @@ const SpadPage = ({ params }) => {
                                 </div>
                                 {
                                     submiting ?
-                                        <Button isProcessing={true} pill={true} className='button-color'>
+                                        <Button isProcessing={true}>
                                             Submiting
                                         </Button> :
-                                        <Button type='submit' onClick={handlePasswordSubmit} pill={true} className='button-color'>
+                                        <Button type='submit' onClick={handlePasswordSubmit}>
                                             Submit
                                         </Button>
                                 }
@@ -148,16 +134,8 @@ const SpadPage = ({ params }) => {
                             </div>
                         </div>
                         <div className='max-w-md mx-auto mb-10'>
-                            <Progress
-                                progress={currentInvestment}
-                                labelProgress={true}
-                                progressLabelPosition="inside"
-                                textLabel="Current Investment"
-                                labelText={true}
-                                textLabelPosition="outside"
-                                size="lg"
-                                className='progress-color'
-                            />
+                            <h4 className='text-sm font-semibold text-gray-400 mb-1'>Current Investment</h4>
+                            <ProgressBar progress={currentInvestment} />
                         </div>
                         {
                             club &&

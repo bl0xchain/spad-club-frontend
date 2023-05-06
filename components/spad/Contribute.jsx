@@ -1,13 +1,13 @@
 import { formatUSDC } from '@/helpers/helpers'
-import { contribute } from '@/helpers/tokenClub'
-import { Button, TextInput } from 'flowbite-react'
+import { contribute } from '@/helpers/spadClub'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
+import TextInput from '../template/TextInput'
+import Button from '../template/Button'
 
 const Contribute = ({ address, clubAddress, spadId, spad, loadSpad, contribution, password }) => {
     const [show, setShow] = useState(false)
     const [amount, setAmount] = useState("")
-    // const [password, setPassword] = useState("")
     const [contributing, setContributing] = useState(false)
 
     const handleContribution = async(e) => {
@@ -17,7 +17,6 @@ const Contribute = ({ address, clubAddress, spadId, spad, loadSpad, contribution
             return false;
         }
         setContributing(true);
-        console.log("contribute");
         const response = await contribute(address, clubAddress, spadId, password, amount);
         if (response.code == 200) {
             toast.success("Contribution successful");
@@ -40,28 +39,19 @@ const Contribute = ({ address, clubAddress, spadId, spad, loadSpad, contribution
                     required={true}
                     min={0}
                     max={parseInt(formatUSDC(spad.maxInvestment - contribution))}
-                    addon="USDC"
+                    suffix="USDC"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                 />
-                {/* <TextInput
-                    type='password'
-                    placeholder="Password"
-                    required={true}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                /> */}
                 {
                     contributing ?
-                    <Button isProcessing={true} disabled pill={true} className='button-color'>Contributing</Button> :
-                    <Button type='submit' onClick={handleContribution} pill={true} className='button-color'>Contribute</Button>
+                    <Button isProcessing={true} disabled>Contributing</Button> :
+                    <Button type='submit' onClick={handleContribution}>Contribute</Button>
                 }
                 
             </form> :
-            <Button onClick={()=>setShow(true)} pill={true} className='button-color'>Contribute</Button>
-
+            <Button onClick={()=>setShow(true)}>Contribute</Button>
         }
-            
         </div>
     )
 }

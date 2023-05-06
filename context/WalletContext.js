@@ -10,6 +10,7 @@ export const WalletProvider = ({ children }) => {
     const [address, setAddress] = useState(null)
     const [chainId, setChainId] = useState(null)
     const [status, setStatus] = useState("")
+    const validChainId = '0x66eed'
 
     const connectWallet = async() => {
         if (typeof window.ethereum !== 'undefined') {
@@ -20,7 +21,7 @@ export const WalletProvider = ({ children }) => {
                 const chain = await  window.ethereum.request({ method: 'eth_chainId' });
                 setChainId(chain)
                 setAddress(web3.utils.toChecksumAddress(addressArray[0]))
-                setStatus(chain == '0x5' ? "CONNECTED" : "INVALID_CHAIN")
+                setStatus(chain == validChainId ? "CONNECTED" : "INVALID_CHAIN")
             } catch (err) {
                 setAddress("")
                 setChainId("")
@@ -43,7 +44,7 @@ export const WalletProvider = ({ children }) => {
                     const chain = await ethereum.request({ method: 'eth_chainId' });
                     setChainId(chain)
                     setAddress(web3.utils.toChecksumAddress(addressArray[0]))
-                    setStatus(chain == '0x5' ? "CONNECTED" : "INVALID_CHAIN")
+                    setStatus(chain == validChainId ? "CONNECTED" : "INVALID_CHAIN")
                 } else {
                     setAddress("")
                     setChainId("")
@@ -64,28 +65,30 @@ export const WalletProvider = ({ children }) => {
 
     const changeNetwork = async() => {
         if (typeof window.ethereum !== 'undefined') {
-            const chainId = '5';
+            const chainId = '421613';
             if (window.ethereum.networkVersion !== chainId) {
                 try {
-                    await window.ethereum.request({
+                    const resp = await window.ethereum.request({
                         method: 'wallet_switchEthereumChain',
-                        params: [{ chainId: '0x5' }]
+                        params: [{ chainId: '0x66eed' }]
                     });
+                    console.log(resp)
                     const addressArray = await window.ethereum.request({
                         method: "eth_requestAccounts",
                     });
                     const chain = await  window.ethereum.request({ method: 'eth_chainId' });
                     setChainId(chain)
                     setAddress(web3.utils.toChecksumAddress(addressArray[0]))
-                    setStatus(chain == '0x5' ? "CONNECTED" : "INVALID_CHAIN")
+                    setStatus(chain == validChainId ? "CONNECTED" : "INVALID_CHAIN")
                 } catch (error) {
+                    console.log(error)
                     const addressArray = await window.ethereum.request({
                         method: "eth_requestAccounts",
                     });
                     const chain = await  window.ethereum.request({ method: 'eth_chainId' });
                     setChainId(chain)
                     setAddress(web3.utils.toChecksumAddress(addressArray[0]))
-                    setStatus(chain == '0x5' ? "CONNECTED" : "INVALID_CHAIN")
+                    setStatus(chain == validChainId ? "CONNECTED" : "INVALID_CHAIN")
                 }
             }
         } else {
