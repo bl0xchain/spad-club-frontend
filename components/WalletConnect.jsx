@@ -30,7 +30,9 @@ const WalletConnect = () => {
         <>
             {
                 status == "CONNECTED" ?
-                    <div className='bg-green-100 px-4 py-2 rounded-xl'>{getShortAddress(address)}</div> :
+                    <div className='bg-green-100 px-4 py-2 rounded-xl'>
+                       Arbitrum Goerli: {getShortAddress(address)}
+                    </div> :
                     <>
                         {
                             status == "INVALID_CHAIN" ?
