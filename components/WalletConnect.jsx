@@ -35,7 +35,7 @@ const WalletConnect = () => {
                             status == "INVALID_CHAIN" ?
                                 <Tooltip message="Connect to Arbitrum Goerli Network">
                                     <Button onClick={changeNetwork}>
-                                        Invalid Network
+                                        Switch to Arbitrum Goerli
                                     </Button>
                                 </Tooltip> :
                                 <>

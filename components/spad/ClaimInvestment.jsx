@@ -39,7 +39,7 @@ const ClaimInvestment = ({ address, clubAddress, spadId, contribution, spad }) =
         }
     }, [contribution])
     return (
-        <div>
+        <div className='flex flex-col items-center gap-4'>
         { 
             (parseInt(contribution) > 0 ) &&
             <>
@@ -54,6 +54,7 @@ const ClaimInvestment = ({ address, clubAddress, spadId, contribution, spad }) =
                 }
                 </>
             }
+            <p>Your tokens  = contribution - carry({spad.carry}%)</p>
             </>
         }   
         </div>

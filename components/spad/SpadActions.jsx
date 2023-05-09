@@ -4,6 +4,9 @@ import { getContribution } from '@/helpers/spadClub';
 import React, { useContext, useEffect, useState } from 'react'
 import Button from '../template/Button';
 import Contribute from './Contribute';
+import EtherscanAddress from '../layout/EtherscanAddress';
+import TokensForDistribution from './TokensForDistribution';
+import ClaimInvestment from './ClaimInvestment';
 
 const SpadActions = ({ clubAddress, spadId, spad, loadSpad, creator, password }) => {
     const { address } = useContext(WalletContext)
@@ -31,12 +34,18 @@ const SpadActions = ({ clubAddress, spadId, spad, loadSpad, creator, password })
                 </> :
                 <>
                 {
-                    spad.externalTokenAdded ? <></> :
-                    // <ClaimInvestment address={address} clubAddress={clubAddress} spadId={spadId} contribution={contribution} spad={spad} /> :
+                    spad.externalTokenAdded ? 
                     <>
                     {
-                        address == creator ? <></> :
-                        // <TokensForDistribution address={address} clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad} /> :
+                        address == creator &&
+                        <p className='text-green-800 text-lg'>SPAD Tokens are added for distribution</p>
+                    }
+                    <ClaimInvestment address={address} clubAddress={clubAddress} spadId={spadId} contribution={contribution} spad={spad} /> 
+                    </>:
+                    <>
+                    {
+                        address == creator ? 
+                        <TokensForDistribution address={address} clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad} /> :
                         <>
                             <p className='font-semibold text-lg text-orange-400 mb-4'>Tokens not yet deposited by SpadClub creator (<EtherscanAddress address={creator} />)</p>
                             <Button disabled pill={true} className='button-color'>Claim Investment</Button>

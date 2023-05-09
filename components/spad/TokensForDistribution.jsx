@@ -44,7 +44,7 @@ const TokensForDistribution = ({ address, clubAddress, spadId, spad, loadSpad })
                     <form className="flex flex-col gap-6 max-w-md mx-auto" onSubmit={handleClaimTarget}>
                         <div>
                             <label className="mb-2 block" htmlFor="amount">
-                                Total Token Supply"
+                                Total Token Supply
                             </label>
                             <TextInput
                                 id="amount"
