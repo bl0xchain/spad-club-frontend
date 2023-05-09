@@ -3,6 +3,7 @@
 import DataLoading from '@/components/layout/DataLoading';
 import EtherscanAddress from '@/components/layout/EtherscanAddress';
 import SpadActions from '@/components/spad/SpadActions';
+import Breadcrumb from '@/components/template/Breadcrumb';
 import Button from '@/components/template/Button';
 import Card from '@/components/template/Card';
 import ProgressBar from '@/components/template/ProgressBar';
@@ -68,10 +69,15 @@ const SpadPage = ({ params }) => {
         )
     }
     return (
-        <div className='max-w-4xl' style={{ margin: "0 auto" }}>
+        <div className='max-w-4xl mx-auto'>
             {
-                club &&
-                <></>
+                (club && spad) &&
+                <Breadcrumb items={[
+                    {name: 'Home', link: '/', type: 'home'},
+                    {name: 'Clubs', link: '/clubs', type: 'link'},
+                    {name: club.name, link: `/clubs/${clubAddress}`, type: 'link'},
+                    {name: `${spad.spadName}`, link: `/clubs/${clubAddress}/${spadId}`, type: 'page'},
+                ]}></Breadcrumb>
             }
             {
                 address == "" || spad?.error ?

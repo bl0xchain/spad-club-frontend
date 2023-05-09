@@ -6,7 +6,10 @@ const Modal = ({ children, className, show, onClose, ...props }) => {
         <div className={`fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm flex justify-center items-center z-50`}>
             <div class="fixed inset-0 z-10 overflow-y-auto">
                 <div className='md:w-[600px] w-[90%] mx-auto relative my-10'>
-                    <FiX className='text-gray-500 hover:text-black text-2xl cursor-pointer absolute right-2 top-2' onClick={onClose} />
+                    {
+                        onClose != false &&
+                        <FiX className='text-gray-500 hover:text-black text-2xl cursor-pointer absolute right-2 top-2' onClick={onClose} />
+                    }
                     <div className='bg-white p-5 rounded-xl'>
                         {children}
                     </div>
