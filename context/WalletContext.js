@@ -10,6 +10,7 @@ export const WalletProvider = ({ children }) => {
     const [address, setAddress] = useState(null)
     const [chainId, setChainId] = useState(null)
     const [status, setStatus] = useState("")
+    const [network, setNetwork] = useState("")
     const validChainId = '0x66eed'
 
     const connectWallet = async() => {
@@ -21,16 +22,24 @@ export const WalletProvider = ({ children }) => {
                 const chain = await  window.ethereum.request({ method: 'eth_chainId' });
                 setChainId(chain)
                 setAddress(web3.utils.toChecksumAddress(addressArray[0]))
-                setStatus(chain == validChainId ? "CONNECTED" : "INVALID_CHAIN")
+                if(chain == validChainId) {
+                    setStatus("CONNECTED")
+                    setNetwork("Arbitrum")
+                } else {
+                    setStatus("INVALID_CHAIN")
+                    setNetwork("")
+                }
             } catch (err) {
                 setAddress("")
                 setChainId("")
                 setStatus("NOT_CONNECTED")
+                setNetwork("")
             }
         } else {
             setAddress("")
             setChainId("")
             setStatus("NO_METAMASK")
+            setNetwork("")
         }
     }
 
@@ -44,22 +53,31 @@ export const WalletProvider = ({ children }) => {
                     const chain = await ethereum.request({ method: 'eth_chainId' });
                     setChainId(chain)
                     setAddress(web3.utils.toChecksumAddress(addressArray[0]))
-                    setStatus(chain == validChainId ? "CONNECTED" : "INVALID_CHAIN")
+                    if(chain == validChainId) {
+                        setStatus("CONNECTED")
+                        setNetwork("Arbitrum")
+                    } else {
+                        setStatus("INVALID_CHAIN")
+                        setNetwork("")
+                    }
                 } else {
                     setAddress("")
                     setChainId("")
                     setStatus("NOT_CONNECTED")
+                    setNetwork("")
                 }
             } catch (err) {
                 setAddress("")
                 setChainId("")
                 setStatus("UNKNOWN_ERROR")
+                setNetwork("")
             }
     
         } else {
             setAddress("")
             setChainId("")
             setStatus("NO_METAMASK")
+            setNetwork("")
         }
     }
 
@@ -72,14 +90,19 @@ export const WalletProvider = ({ children }) => {
                         method: 'wallet_switchEthereumChain',
                         params: [{ chainId: '0x66eed' }]
                     });
-                    console.log(resp)
                     const addressArray = await window.ethereum.request({
                         method: "eth_requestAccounts",
                     });
                     const chain = await  window.ethereum.request({ method: 'eth_chainId' });
                     setChainId(chain)
                     setAddress(web3.utils.toChecksumAddress(addressArray[0]))
-                    setStatus(chain == validChainId ? "CONNECTED" : "INVALID_CHAIN")
+                    if(chain == validChainId) {
+                        setStatus("CONNECTED")
+                        setNetwork("Arbitrum")
+                    } else {
+                        setStatus("INVALID_CHAIN")
+                        setNetwork("")
+                    }
                 } catch (error) {
                     console.log(error)
                     const addressArray = await window.ethereum.request({
@@ -88,13 +111,20 @@ export const WalletProvider = ({ children }) => {
                     const chain = await  window.ethereum.request({ method: 'eth_chainId' });
                     setChainId(chain)
                     setAddress(web3.utils.toChecksumAddress(addressArray[0]))
-                    setStatus(chain == validChainId ? "CONNECTED" : "INVALID_CHAIN")
+                    if(chain == validChainId) {
+                        setStatus("CONNECTED")
+                        setNetwork("Arbitrum")
+                    } else {
+                        setStatus("INVALID_CHAIN")
+                        setNetwork("")
+                    }
                 }
             }
         } else {
             setAddress("")
             setChainId("")
             setStatus("NO_METAMASK")
+            setNetwork("")
         }
     }
 
@@ -104,6 +134,7 @@ export const WalletProvider = ({ children }) => {
                 address,
                 chainId,
                 status,
+                network,
                 loadWallet,
                 connectWallet,
                 changeNetwork

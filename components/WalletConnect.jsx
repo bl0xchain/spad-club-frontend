@@ -4,10 +4,11 @@ import React, { useContext, useEffect, useState } from 'react'
 import Button from './template/Button'
 import Tooltip from './template/Tooltip'
 import Modal from './template/Modal'
-import { FaExternalLinkAlt, FaUnlink } from 'react-icons/fa'
+import { FaExclamationTriangle } from 'react-icons/fa'
+import Image from 'next/image'
 
 const WalletConnect = () => {
-    const { address, status, connectWallet, loadWallet, changeNetwork } = useContext(WalletContext)
+    const { address, status, network, connectWallet, loadWallet, changeNetwork } = useContext(WalletContext)
     const [visible, setVisible] = useState(false);
 
     const addWalletListener = () => {
@@ -30,37 +31,45 @@ const WalletConnect = () => {
         <>
             {
                 status == "CONNECTED" ?
-                    <div className='bg-green-100 px-4 py-2 rounded-xl'>
-                       Arbitrum Goerli: {getShortAddress(address)}
-                       
-                    </div> :
+                    <>
+                        <div className='flex items-center'>
+                            <Image 
+                                src="/arbitrum.svg"
+                                height={42}
+                                width={42}
+                                alt="Arbitrum"
+                                className='mt-1'
+                            />
+                            <div className='leading-3'>
+                                { network }
+                                <div className='text-xs'>Goerli</div>
+                            </div>
+                            
+                        </div>
+                        <div className='bg-green-100 px-4 py-2 rounded-xl'>{getShortAddress(address)}</div>
+                    </> :
                     <>
                         {
                             status == "INVALID_CHAIN" ?
                                 <>
-                                <Tooltip message="Connect to Arbitrum Goerli Network">
-                                    <Button onClick={changeNetwork}>
-                                        Switch to Arbitrum Goerli
-                                    </Button>
-                                </Tooltip>
-                                <Modal show={true} onClose={false}>
-                                    
-                                    <div className='flex flex-col gap-5 p-4 items-center'>
-                                        <h3 className="text-2xl font-medium text-gray-400">
-                                            <FaUnlink className='block text-red-400 mx-auto mb-2' />
+                                    <Tooltip message="Connect to Arbitrum Goerli Network">
+                                        <Button onClick={changeNetwork}>
                                             Invalid Network
-                                        </h3>
-                                        <h3 className="text-lg font-medium text-gray-900">
-                                            Please connect to Arbitrum Goerli Network
-                                        </h3>
-                                        <Button onClick={changeNetwork} className='w-[300px]'>
-                                            Switch to Arbitrum Goerli
                                         </Button>
-                                    </div>
-                                </Modal>
+                                    </Tooltip>
+                                    <Modal show={true} onClose={false}>
+                                        <div className="p-5 text-center">
+                                            <h3 className="text-xl font-bold text-gray-900">
+                                                Wrong Network
+                                                <FaExclamationTriangle className='block mx-auto text-5xl my-3 text-red-400' />
+                                            </h3>
+                                            <p>Please change your network to Arbitrum Goerli</p>
+                                            <Button onClick={changeNetwork} className="block mx-auto mt-4">Switch Network</Button>
+                                        </div>
+                                    </Modal>
                                 </> :
                                 <>
-                                    {
+                                    { 
                                         status == "NOT_CONNECTED" ?
                                             <Button onClick={connectWallet}>
                                                 Connect Wallet
@@ -71,14 +80,14 @@ const WalletConnect = () => {
                                                 </Button>
                                                 <Modal show={visible} onClose={() => setVisible(false)}>
                                                     <div className="p-5">
-                                                        <h3 className="text-xl font-medium text-gray-900 mb-5">
+                                                        <h3 className="text-xl font-medium text-gray-900">
                                                             Connect Wallet
                                                         </h3>
                                                         {
                                                             status == 'NO_METAMASK' ?
                                                                 <p>
-                                                                    You must install Metamask, a virtual Ethereum wallet, in your browser.<br />
-                                                                    <a href='https://metamask.io/download' target="_blank" className='text-purple-600 hover:underline'>Get Metamask <FaExternalLinkAlt className='inline text-sm' /> </a>
+                                                                    You must install Metamask, a virtual Ethereum wallet, in your browser.
+                                                                    <Link href='https://metamask.io/download' target="_blank">Get Metamask</Link>
                                                                 </p> :
                                                                 <p>
                                                                     Problem with connecting the wallet. Please reload the page and try again.

@@ -6,3 +6,43 @@
     min-height: calc(100vh - 120px);
     padding: 25px 0;
 }
+
+input:checked+div {
+    @apply border-purple-500;
+    @apply bg-purple-500;
+}
+
+input:checked+div svg {
+    @apply block;
+}
+
+.spad-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-block;
+    border: 1px solid;
+    padding: 4px 10px;
+    border-radius: 0.5em;
+    text-transform: uppercase;
+}
+
+.spad-status.open {
+    border-color: #1CD223;
+    color: #1CD223;
+}
+
+.spad-status.closed {
+    border-color: #F40732;
+    color: #F40732;
+}
+
+.spad-status.acquired {
+    border-color: #666;
+    color: #666;
+}
+
+.spad-status.pending {
+    border-color: #ffc853;
+    color: #ffc853;
+}
