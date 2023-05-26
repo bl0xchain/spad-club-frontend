@@ -7,7 +7,7 @@ const privacyAbi = require("../helpers/abis/privacy.json");
 export const privacyAddress = "0x9a7E234163b225FA5D09D1EEDF122c1F99dc391A";
 export const privacyContract = new web3.eth.Contract(privacyAbi, privacyAddress);
 
-const getSpadContract = (spadAddress) => {
+export const getSpadContract = (spadAddress) => {
     return new web3.eth.Contract(
         spadAbi,
         spadAddress

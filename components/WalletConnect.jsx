@@ -38,7 +38,7 @@ const WalletConnect = () => {
                                 height={42}
                                 width={42}
                                 alt="Arbitrum"
-                                className='mt-1'
+                                className='mt-1 width-auto height-auto'
                             />
                             <div className='leading-3'>
                                 { network }
@@ -80,14 +80,14 @@ const WalletConnect = () => {
                                                 </Button>
                                                 <Modal show={visible} onClose={() => setVisible(false)}>
                                                     <div className="p-5">
-                                                        <h3 className="text-xl font-medium text-gray-900">
+                                                        <h3 className="text-xl font-medium text-gray-900 mb-2">
                                                             Connect Wallet
                                                         </h3>
                                                         {
                                                             status == 'NO_METAMASK' ?
                                                                 <p>
-                                                                    You must install Metamask, a virtual Ethereum wallet, in your browser.
-                                                                    <Link href='https://metamask.io/download' target="_blank">Get Metamask</Link>
+                                                                    You must install Metamask, a virtual Ethereum wallet, in your browser.<br /><br />
+                                                                    <a href='https://metamask.io/download' target="_blank" className='text-purple-700 underline'>Get Metamask</a>
                                                                 </p> :
                                                                 <p>
                                                                     Problem with connecting the wallet. Please reload the page and try again.

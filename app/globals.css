@@ -46,3 +46,19 @@ input:checked+div svg {
     border-color: #ffc853;
     color: #ffc853;
 }
+
+.spad-feature-list .pending {
+    color: #ffc853;
+  }
+  .spad-feature-list .open {
+    color: #1CD223;
+  }
+  .spad-feature-list .expired {
+    color: #000000;
+  }
+  .spad-feature-list .closed {
+    color: #F40732;
+  }
+  .spad-feature-list .acquired {
+    color: #666666;
+  }

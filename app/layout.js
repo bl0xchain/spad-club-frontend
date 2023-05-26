@@ -14,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${karla.className} bg-gray-50`}>
+      <body className={`${karla.className} bg-slate-100`}>
         <GlobalProvider>
           <Header />
           <main id="main-content">

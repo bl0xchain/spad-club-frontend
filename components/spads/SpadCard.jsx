@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Text from '../template/Text'
 import ProgressBar from '../template/ProgressBar'
 import Decimal from 'decimal.js-light'
+import SpadActions from './SpadActions'
 
 const SpadCard = ({ spadAddress }) => {
     const [spad, setSpad] = useState(null)
@@ -38,7 +39,7 @@ const SpadCard = ({ spadAddress }) => {
     }
 
     return (
-        <Card className='relative text-gray-600'>
+        <Card className='relative text-gray-700'>
             <div className={"spad-status " + spadStatus[spad.status]}>{spadStatus[spad.status]}</div>
             <Link href={`/spads/${spadAddress}`}>
                 <Text className='font-bold'>{spad.name}</Text>
@@ -74,6 +75,7 @@ const SpadCard = ({ spadAddress }) => {
                     </div>
                 </div>
             </div>
+            <SpadActions spadAddress={spadAddress} spad={spad} loadSpad={loadSpad} />
         </Card>
     )
 }
