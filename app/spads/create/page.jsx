@@ -15,7 +15,7 @@ const CreateSpadPage = () => {
           </Card>
         </div>
         <div className='flex-initial w-72'>
-          <Card>
+          <Card href="/spads/create/private">
             <div className='flex flex-col h-56 justify-center gap-5'>
               <h2 className='text-gray-400 font-bold text-center'>Private SPAD</h2>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate minima aliquid eius dicta molestiae ipsam consectetur totam explicabo.</p>

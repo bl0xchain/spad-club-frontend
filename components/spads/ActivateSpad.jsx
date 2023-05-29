@@ -156,14 +156,14 @@ const ActivateSpad = ({ spadAddress, spad, loadSpad }) => {
                             <>
                                 {allowing ?
                                     <Button disabled isProcessing={true} className="mx-auto">Allowing {spad.investmentCurrency}</Button> :
-                                    <Button onClick={handleCurrencyAllow} className="mx-auto">Allow {spad.investmentCurrency}</Button>
+                                    <Button onClick={handleCurrencyAllow} className="mx-auto">Allow {spad.investmentCurrency} to Activate SPAD</Button>
                                 }
                             </>
                     }
                     {
                         spad.isPrivate &&
                         <Modal show={activationModalShow} onClose={() => setActivationModalShow(false)}>
-                            <div className='text-2xl font-bold'>Activation Pitch</div>
+                            <div className='text-2xl font-bold mb-10'>Activation Pitch</div>
                             <div>
                                 <label className="form-label">Enter Your Activation Pitch for the SPAD</label>
                                 <TextArea
@@ -198,12 +198,12 @@ const ActivateSpad = ({ spadAddress, spad, loadSpad }) => {
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <Button variant="secondary" onClick={() => setActivationModalShow(false)}>
-                                    Cancel
-                                </Button>
+                            <div className='flex justify-center gap-4'>
                                 <Button onClick={handlePitchActivation}>
                                     Proceed
+                                </Button>
+                                <Button variant="secondary" onClick={() => setActivationModalShow(false)}>
+                                    Cancel
                                 </Button>
                             </div>
                         </Modal>

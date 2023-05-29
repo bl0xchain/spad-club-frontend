@@ -37,7 +37,7 @@ const SpadPage = ({ params }) => {
                 <CompletedSpad spadAddress={spadAddress} spad={spad} />
             }
             {
-                spad.isPrivate &&
+                (spad.isPrivate && spad.status != 1 ) &&
                 <CreatorPitch spadAddress={spadAddress} creator={spad.creator} />
             }
             <hr className='my-10 bg-gradient-to-r from-rose-400 via-purple-600 via-75% to-violet-600 h-1' />

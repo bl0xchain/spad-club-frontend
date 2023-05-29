@@ -44,3 +44,29 @@ export const getAllSpads = async () => {
     })
     return spadAddresses.reverse();
 }
+
+export const getCreatedSpads = async(address) => {
+    const spadAddresses = [];
+    const spads = await spadFactory.getPastEvents('SpadCreated', {
+        filter: { initiator: address },
+        fromBlock: 0,
+        toBlock: 'latest'
+    });
+    spads.forEach((event) => {
+        spadAddresses.push(event.returnValues.spadAddress);
+    })
+    return spadAddresses.reverse();
+}
+
+export const getCreatedPrivateSpads = async(address) => {
+    const spadAddresses = [];
+    const spads = await spadFactory.getPastEvents('SpadPrivateCreated', {
+        filter: { initiator: address },
+        fromBlock: 0,
+        toBlock: 'latest'
+    });
+    spads.forEach((event) => {
+        spadAddresses.push(event.returnValues.spadAddress);
+    })
+    return spadAddresses.reverse();
+}

@@ -63,7 +63,7 @@ const SpadActions = ({ spadAddress, spad, loadSpad }) => {
                     <>{
                         spad.creator === address ?
                             <ActivateSpad spadAddress={spadAddress} spad={spad} loadSpad={loadSpad} /> :
-                            <p className="mb-0 text-warning">SPAD is not yet activated</p>
+                            <p className="mb-0 text-amber-500 font-bold">SPAD is not yet activated</p>
                     }</> :
                     <>{
                         spad.status === "2" ?
