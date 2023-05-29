@@ -2,7 +2,7 @@ import WalletContext from '@/context/WalletContext';
 import { pitchReview } from '@/helpers/actions';
 import { getPitch } from '@/helpers/pitch';
 import { getSpadContract } from '@/helpers/spad';
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import DataLoading from '../layout/DataLoading';
 import EtherscanAddress from '../layout/EtherscanAddress';
@@ -57,7 +57,7 @@ const Pitch = ({ spadAddress, pitcher }) => {
     return (
         <div>
             <h5 className="mb-0">{pitch.name}</h5>
-            <small className="text-gray-400">{pitcher}</small>
+            <p className="text-gray-400"><EtherscanAddress address={pitcher} icon={true} text={pitcher} /></p>
             <p className="mt-3">{pitch.description}</p>
             <div>
                 <p>
@@ -78,7 +78,7 @@ const Pitch = ({ spadAddress, pitcher }) => {
                             <p className="text-blue-400">Pending</p>
                             {
                                 pitchReviewProcessing ?
-                                    <>
+                                    <div className='mt-2'>
                                         {
                                             review ?
                                                 <Button disabled isProcessing={true}>
@@ -88,8 +88,8 @@ const Pitch = ({ spadAddress, pitcher }) => {
                                                     Rejecting Pitch {' '}
                                                 </Button>
                                         }
-                                    </> :
-                                    <div>
+                                    </div> :
+                                    <div className='flex items-center gap-4 mt-2'>
                                         <Button onClick={() => handleApproval(true)}>
                                             Approve Pitch
                                         </Button>{' '}

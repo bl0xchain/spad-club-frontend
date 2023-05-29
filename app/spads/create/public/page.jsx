@@ -84,7 +84,7 @@ const CreatePublicSpad = () => {
                 <Text className="uppercase font-bold text-2xl">Start a public SPAD</Text>
             </div>
             
-            <form className='mx-auto mt-16 rounded-lg border max-w-2xl sm:mt-20 p-8 shadow-xl' onSubmit={handleStartSpad}>
+            <form className='bg-white mx-auto mt-16 rounded-lg border max-w-2xl sm:mt-20 p-8 shadow-xl' onSubmit={handleStartSpad}>
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-3 mb-6">
                     <div className='sm:col-span-2'>
                         <label htmlFor="name" className='block mb-2 text-sm font-medium text-gray-900'>

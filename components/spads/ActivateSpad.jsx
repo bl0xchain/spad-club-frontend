@@ -24,8 +24,8 @@ const ActivateSpad = ({ spadAddress, spad, loadSpad }) => {
     const { address, status } = useContext(WalletContext)
 
     const tokenOptions = [
-        { value: 'spad_token', label: `${spad.symbol} Token` },
-        { value: 'external_token', label: `External Token` }
+        { key: 'spad_token', value: `${spad.symbol} Token` },
+        { key: 'external_token', value: `External Token` }
     ]
 
     const handleActivate = async() => {

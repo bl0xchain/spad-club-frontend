@@ -132,6 +132,7 @@ const Contribute = ({ spadAddress, spad, loadSpad }) => {
                                         type='number'
                                         required={true}
                                         min={0.1}
+                                        step={0.1}
                                         suffix={spad.investmentCurrency}
                                         value={contributionAmount}
                                         onChange={(e) => setAmount(e.target.value)}

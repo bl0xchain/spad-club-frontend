@@ -1,4 +1,5 @@
 import { getContribution, getFundData } from "./fund";
+import { getAcquiredBy, getPitch } from "./pitch";
 import { getCurrencyName, getFromDecimals } from "./tokens";
 import web3 from "./web3";
 
@@ -45,9 +46,9 @@ export const getSpadDetails = async (spadAddress, addPitch = false) => {
     spadDetails.currentInvstPercent = Math.round((spadDetails.currentInvestmentView / spadDetails.targetView) * 10000) / 100;
 
     if (spadDetails.status == 5) {
-        spadDetails.acquiredBy = await pitchService.getAcquiredBy(spadAddress);
+        spadDetails.acquiredBy = await getAcquiredBy(spadAddress);
         if (addPitch) {
-            spadDetails.pitch = await pitchService.getPitch(spadDetails.acquiredBy, spadAddress);
+            spadDetails.pitch = await getPitch(spadDetails.acquiredBy, spadAddress);
         }
     }
 

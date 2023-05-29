@@ -6,6 +6,7 @@ import EtherscanAddress from '../layout/EtherscanAddress'
 import ProgressBar from '../template/ProgressBar'
 import Text from '../template/Text'
 import SpadActions from './SpadActions'
+import Share from './Share'
 
 const SpadDetailsCard = ({ spadAddress, spad, loadSpad, hideActions }) => {
     const spadStatus = {
@@ -18,8 +19,8 @@ const SpadDetailsCard = ({ spadAddress, spad, loadSpad, hideActions }) => {
     return (
         <Card>
             <div className="relative rounded-xl bg-gradient-to-r from-rose-400 via-purple-600 via-75% to-violet-600 p-5 text-white">
-                <div className="text-end">Share Buttons</div>
-                <div className='flex justify-between gap-5'>
+                <Share />
+                <div className='flex justify-between gap-5 mt-5'>
                     <div >
                         <p className="font-bold text-lg">TOKEN SYMBOL</p>
                         <div className="absolute block bg-white text-gray-800 font-bold text-3xl text-center pt-11 w-32 h-32 rounded-full border-purple-500 border-2 -bottom-[55px]">{spad.symbol}</div>

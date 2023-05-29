@@ -9,6 +9,7 @@ import { getFromDecimals } from '@/helpers/tokens';
 import Contribute from './Contribute';
 import EtherscanAddress from '../layout/EtherscanAddress';
 import Button from '../template/Button';
+import Text from '../template/Text';
 
 const SpadActions = ({ spadAddress, spad, loadSpad }) => {
 
@@ -27,7 +28,8 @@ const SpadActions = ({ spadAddress, spad, loadSpad }) => {
             setIsClaimed(isClaimed);
             if (isClaimed) {
                 const tokens = await getClaimedTokens(address, spadAddress);
-                setClaimedTokens(ethers.formatUnits(tokens, spad.pitch.tokenDecimals));
+                console.log(tokens)
+                setClaimedTokens(ethers.formatUnits(tokens, parseInt(spad.pitch.tokenDecimals)));
             }
         }
     }
@@ -72,7 +74,7 @@ const SpadActions = ({ spadAddress, spad, loadSpad }) => {
                                         <>
                                             {
                                                 contribution === 0 ?
-                                                    <Link href={"/pitch/" + spadAddress} className="btn btn-color">PITCH</Link> :
+                                                    <Button href={"/spads/pitch/" + spadAddress} className="pr-2" style={{display:'inline-block'}}>PITCH</Button> :
                                                     <>
                                                         <div className="font-bold text-sm text-gray-400">YOUR CONTRIBUTION</div>
                                                         <p className="font-bold text-xl">{contribution} {" "} {spad.investmentCurrency}</p>
@@ -85,19 +87,19 @@ const SpadActions = ({ spadAddress, spad, loadSpad }) => {
                                                 <>
                                                     {
                                                         spad.creator === address ?
-                                                            <p className="fw-bold">
-                                                                You have approved the pitch of <span className="text-color underline"><EtherscanAddress address={spad.acquiredBy} /></span>  and {" "}
+                                                            <p className="font-bold">
+                                                                You have approved the pitch of <Text className="underline"><EtherscanAddress address={spad.acquiredBy} /></Text>  and {" "}
                                                                 {spad.targetView} {" "} {spad.investmentCurrency} has been transfered to pitcher account.
                                                             </p> :
                                                             <>
                                                                 {
                                                                     spad.acquiredBy === address ?
-                                                                        <p className="fw-bold">
+                                                                        <p className="font-bold text-green-700">
                                                                             Your pitch has been approved and {" "}
                                                                             {spad.targetView} {" "} {spad.investmentCurrency} has been transfered to your account.
                                                                         </p> :
-                                                                        <p className="fw-bold">
-                                                                            The SPAD is aquired by <span className="text-color"><EtherScanAddress address={spad.acquiredBy} /></span>
+                                                                        <p className="font-bold">
+                                                                            The SPAD is aquired by <Text className="underline"><EtherscanAddress address={spad.acquiredBy} /></Text>
                                                                         </p>
                                                                 }
                                                             </>
@@ -106,23 +108,23 @@ const SpadActions = ({ spadAddress, spad, loadSpad }) => {
                                             }
                                             {
                                                 contribution > 0 &&
-                                                <>
+                                                <div className='mt-5'>
                                                     {
                                                         isClaimed ?
                                                             <p className="text-success1 mb-0">You have claimed your <b>{claimedTokens} {" "} {spad.pitch.tokenSymbol}</b> tokens </p> :
                                                             <div>
                                                                 {
                                                                     claimProcessing ?
-                                                                        <Button disabled isProcessing={true}>
+                                                                        <Button disabled isProcessing={true} className="mx-auto">
                                                                             Claiming Tokens {' '}
                                                                         </Button> :
-                                                                        <Button onClick={handleClaim}>
+                                                                        <Button onClick={handleClaim} className="mx-auto">
                                                                             Claim Tokens
                                                                         </Button>
                                                                 }
                                                             </div>
                                                     }
-                                                </>
+                                                </div>
                                             }
                                         </>
                                 }
