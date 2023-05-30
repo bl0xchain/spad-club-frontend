@@ -10,7 +10,7 @@ import ProgressBar from '@/components/template/ProgressBar';
 import TextInput from '@/components/template/TextInput';
 import WalletContext from '@/context/WalletContext';
 import { formatEther, formatUSDC } from '@/helpers/helpers';
-import { getClubData, getSpadDetails } from '@/helpers/spadClub';
+import { getClubData, getSpadDetails } from '@/helpers/spad-club';
 import React, { useContext, useEffect, useState } from 'react'
 import { FaHome } from 'react-icons/fa';
 import { toast } from 'react-toastify';

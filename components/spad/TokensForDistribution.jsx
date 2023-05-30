@@ -1,4 +1,4 @@
-import { addTokensForDistribution } from '@/helpers/spadClub'
+import { addTokensForDistribution } from '@/helpers/spad-club'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import TextInput from '../template/TextInput'

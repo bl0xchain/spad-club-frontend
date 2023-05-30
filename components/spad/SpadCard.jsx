@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getExcerpt } from '@/helpers/helpers'
 import Card from '../template/Card'
 import DataLoading from '../layout/DataLoading'
-import { getSpadInfo } from '@/helpers/spadClub'
+import { getSpadInfo } from '@/helpers/spad-club'
 
 const SpadCard = ({ clubAddress, spadId }) => {
   const [spad, setSpad] = useState(null)

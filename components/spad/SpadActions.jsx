@@ -1,6 +1,6 @@
 import WalletContext from '@/context/WalletContext';
 import { formatUSDC } from '@/helpers/helpers';
-import { getContribution } from '@/helpers/spadClub';
+import { getContribution } from '@/helpers/spad-club';
 import React, { useContext, useEffect, useState } from 'react'
 import Button from '../template/Button';
 import Contribute from './Contribute';

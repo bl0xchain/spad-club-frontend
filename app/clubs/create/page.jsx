@@ -5,7 +5,7 @@ import Card from '@/components/template/Card';
 import TextArea from '@/components/template/TextArea';
 import TextInput from '@/components/template/TextInput';
 import WalletContext from '@/context/WalletContext';
-import { createSpadClub } from '@/helpers/spadClub';
+import { createSpadClub } from '@/helpers/spad-club';
 import { useRouter } from 'next/navigation'
 import React, { useContext, useState } from 'react'
 import { toast } from 'react-toastify';

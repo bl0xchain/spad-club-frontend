@@ -4,7 +4,7 @@ import DataLoading from '@/components/layout/DataLoading';
 import EtherscanAddress from '@/components/layout/EtherscanAddress';
 import CreateSpad from '@/components/spad/CreateSpad';
 import SpadCard from '@/components/spad/SpadCard';
-import { getClubData } from '@/helpers/spadClub';
+import { getClubData } from '@/helpers/spad-club';
 // import CreateSpad from '@/components/spad/CreateSpad';
 // import SpadCard from '@/components/spad/SpadCard';
 import React, { useEffect, useState } from 'react'

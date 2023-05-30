@@ -3,8 +3,8 @@ import web3 from "./web3";
 const factoryAbi = require("../helpers/abis/spad-club-factory.json")
 const clubAbi = require("../helpers/abis/spad-club.json")
 const tokenAbi = require("../helpers/abis/custom-token.json")
-export const factoryAddress = "0x7c47218ef2ccd72eEE1bda89eE1Af17E1e85626c"
-export const usdcAddress = "0x40Bf6C107CAb17181ec2Aa2959BEE028b4698ee1";
+export const factoryAddress = "0xeb3F9aFc8E9AF8eE95cC11519Af37F260BabcC77"
+export const usdcAddress = "0x6e557F271447FD2aA420cbafCdCD66eCDD5A71A8";
 export const factoryContract = new web3.eth.Contract(factoryAbi, factoryAddress)
 export const usdcContract = new web3.eth.Contract(tokenAbi, usdcAddress)
 

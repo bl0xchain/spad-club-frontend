@@ -1,27 +1,33 @@
-[{
+[
+    {
         "anonymous": false,
-        "inputs": [{
-            "indexed": false,
-            "internalType": "uint8",
-            "name": "version",
-            "type": "uint8"
-        }],
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint8",
+                "name": "version",
+                "type": "uint8"
+            }
+        ],
         "name": "Initialized",
         "type": "event"
     },
     {
         "anonymous": false,
-        "inputs": [{
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "spadId",
-            "type": "uint256"
-        }],
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "spadId",
+                "type": "uint256"
+            }
+        ],
         "name": "SpadCreated",
         "type": "event"
     },
     {
-        "inputs": [{
+        "inputs": [
+            {
                 "internalType": "uint256",
                 "name": "_spadId",
                 "type": "uint256"
@@ -38,18 +44,21 @@
         "type": "function"
     },
     {
-        "inputs": [{
-            "internalType": "uint256",
-            "name": "_spadId",
-            "type": "uint256"
-        }],
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_spadId",
+                "type": "uint256"
+            }
+        ],
         "name": "claimInvestment",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
     },
     {
-        "inputs": [{
+        "inputs": [
+            {
                 "internalType": "uint256",
                 "name": "_spadId",
                 "type": "uint256"
@@ -71,7 +80,8 @@
         "type": "function"
     },
     {
-        "inputs": [{
+        "inputs": [
+            {
                 "internalType": "string",
                 "name": "_name",
                 "type": "string"
@@ -125,42 +135,51 @@
     {
         "inputs": [],
         "name": "creator",
-        "outputs": [{
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-        }],
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
         "stateMutability": "view",
         "type": "function"
     },
     {
         "inputs": [],
         "name": "description",
-        "outputs": [{
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-        }],
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "inputs": [{
-            "internalType": "uint256",
-            "name": "_spadId",
-            "type": "uint256"
-        }],
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_spadId",
+                "type": "uint256"
+            }
+        ],
         "name": "getContribution",
-        "outputs": [{
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-        }],
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "inputs": [{
+        "inputs": [
+            {
                 "internalType": "uint256",
                 "name": "_spadId",
                 "type": "uint256"
@@ -172,7 +191,8 @@
             }
         ],
         "name": "getSpadDetails",
-        "outputs": [{
+        "outputs": [
+            {
                 "internalType": "string",
                 "name": "spadName",
                 "type": "string"
@@ -232,13 +252,16 @@
         "type": "function"
     },
     {
-        "inputs": [{
-            "internalType": "uint256",
-            "name": "_spadId",
-            "type": "uint256"
-        }],
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_spadId",
+                "type": "uint256"
+            }
+        ],
         "name": "getSpadInfo",
-        "outputs": [{
+        "outputs": [
+            {
                 "internalType": "string",
                 "name": "spadName",
                 "type": "string"
@@ -253,7 +276,8 @@
         "type": "function"
     },
     {
-        "inputs": [{
+        "inputs": [
+            {
                 "internalType": "address",
                 "name": "_creator",
                 "type": "address"
@@ -275,39 +299,47 @@
         "type": "function"
     },
     {
-        "inputs": [{
-            "internalType": "uint256",
-            "name": "_spadId",
-            "type": "uint256"
-        }],
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_spadId",
+                "type": "uint256"
+            }
+        ],
         "name": "isInvestmentClaimed",
-        "outputs": [{
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-        }],
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
         "stateMutability": "view",
         "type": "function"
     },
     {
         "inputs": [],
         "name": "name",
-        "outputs": [{
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-        }],
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
         "stateMutability": "view",
         "type": "function"
     },
     {
         "inputs": [],
         "name": "spadCount",
-        "outputs": [{
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-        }],
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
         "stateMutability": "view",
         "type": "function"
     }

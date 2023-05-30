@@ -3,7 +3,7 @@
 import ClubCard from '@/components/ClubCard';
 import DataLoading from '@/components/layout/DataLoading';
 import Container from '@/components/template/Container';
-import { getClubs } from '@/helpers/spadClub';
+import { getClubs } from '@/helpers/spad-club';
 import React, { useEffect, useState } from 'react'
 
 const ClubsPage = () => {

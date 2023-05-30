@@ -1,5 +1,5 @@
 import { formatEther, formatUSDC } from '@/helpers/helpers'
-import { claimInvestment, isInvestmentClaimed } from '@/helpers/spadClub'
+import { claimInvestment, isInvestmentClaimed } from '@/helpers/spad-club'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import Button from '../template/Button'

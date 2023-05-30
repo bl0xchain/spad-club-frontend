@@ -1,5 +1,5 @@
 import { formatUSDC } from '@/helpers/helpers'
-import { contribute } from '@/helpers/spadClub'
+import { contribute } from '@/helpers/spad-club'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import TextInput from '../template/TextInput'

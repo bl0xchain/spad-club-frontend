@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getExcerpt } from '@/helpers/helpers'
-import { getClubData } from '@/helpers/spadClub'
+import { getClubData } from '@/helpers/spad-club'
 import Card from './template/Card'
 import DataLoading from './layout/DataLoading'
 import EtherscanAddress from './layout/EtherscanAddress'

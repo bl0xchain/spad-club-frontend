@@ -1,5 +1,5 @@
 import WalletContext from '@/context/WalletContext'
-import { createSpad } from '@/helpers/spadClub'
+import { createSpad } from '@/helpers/spad-club'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 import Button from '../template/Button'
@@ -215,7 +215,7 @@ const CreateSpad = ({ clubAddress, loadClub, creator }) => {
                                 </Button>
                         }
 
-                        <Button type="secondary" onClick={handleClose}>
+                        <Button variant="secondary" onClick={handleClose}>
                             Cancel
                         </Button>
                     </div>

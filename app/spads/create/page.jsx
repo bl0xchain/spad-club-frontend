@@ -25,7 +25,7 @@ const CreateSpadPage = () => {
       </div>
       <div className='flex justify-center gap-5'>
         <div className='flex-initial w-72'>
-          <Card>
+          <Card href="/clubs/create">
             <div className='flex flex-col h-56 justify-center gap-5'>
               <h2 className='text-gray-400 font-bold text-center'>SPAD CLUB</h2>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate minima aliquid eius dicta molestiae ipsam consectetur totam explicabo.</p>
