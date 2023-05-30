@@ -3,6 +3,7 @@
 import DataLoading from '@/components/layout/DataLoading';
 import EtherscanAddress from '@/components/layout/EtherscanAddress';
 import SpadActions from '@/components/spad/SpadActions';
+import Share from '@/components/spads/Share';
 import Breadcrumb from '@/components/template/Breadcrumb';
 import Button from '@/components/template/Button';
 import Card from '@/components/template/Card';
@@ -82,6 +83,7 @@ const SpadPage = ({ params }) => {
             {
                 address == "" || spad?.error ?
                     <div className="max-w-sm m-auto mt-10">
+                        
                         <Card>
                             <form className="flex flex-col gap-4">
                                 <h3 className='text-xl font-semibold mb-5'>Please enter password to view SPAD</h3>
@@ -109,6 +111,7 @@ const SpadPage = ({ params }) => {
                     </div>
                     :
                     <> {spad && <>
+                        <Share />
                         <h5 className="mb-5 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                             {spad?.spadName}
                         </h5>

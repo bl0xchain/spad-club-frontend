@@ -4,7 +4,7 @@ const Modal = ({ children, className, show, onClose, ...props }) => {
     if (! show) return null;
     return (
         <div className={`fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm flex justify-center items-center z-50`}>
-            <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div className="fixed inset-0 z-10 overflow-y-auto">
                 <div className='md:w-[600px] w-[90%] mx-auto relative my-10'>
                     {
                         onClose != false &&
