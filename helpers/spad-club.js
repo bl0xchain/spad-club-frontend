@@ -229,3 +229,22 @@ export const claimInvestment = async(address, clubAddress, spadId) => {
         }
     }
 }
+
+export const getSpadClubs = async(address) => {
+    const clubs = await factoryContract.methods.getClubs().call({
+        from: address
+    });
+
+    const spads = [];
+    for (let i = 0; i < clubs.length; i++) {
+        const spadIds = await factoryContract.methods.getSpads(clubs[i]).call({
+            from: address
+        });
+        spads.push({
+            clubAddress: clubs[i],
+            spadIds: spadIds
+        })
+    }
+    console.log(spads);
+    return spads;
+}

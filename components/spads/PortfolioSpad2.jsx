@@ -6,8 +6,12 @@ import DataLoading from '../layout/DataLoading';
 import Link from 'next/link';
 import EtherscanAddress from '../layout/EtherscanAddress';
 import { FaDotCircle } from 'react-icons/fa';
+import Card from '../template/Card';
+import ProgressBar from '../template/ProgressBar';
+import Button from '../template/Button';
+import Text from '../template/Text';
 
-const PortfolioSpad = ({ address, spadAddress, isInitiator, isPitcher }) => {
+const PortfolioSpad2 = ({ address, spadAddress, isInitiator, isPitcher }) => {
     const [spad, setSpad] = useState(null);
     const [claimProcessing, setClaimProcessing] = useState(false);
     const [isClaimed, setIsClaimed] = useState(false);
@@ -51,37 +55,36 @@ const PortfolioSpad = ({ address, spadAddress, isInitiator, isPitcher }) => {
     }, [spadAddress, address])
 
     if (spad == null) {
-        return (<tr><td colSpan={4}><DataLoading /></td></tr>);
+        return <Card>
+            <DataLoading />
+        </Card>;
     }
 
     return (
-        <tr>
-            <td className='pt-4'>
-                <Link href={"/spads/" + spadAddress}>
-                    {spad.name}
-                </Link>
-            </td>
-            {
-                !isPitcher &&
-                <td className='pt-4'>
+        <Card className="relative">
+            <div>
+                <p className={`spad-feature-list uppercase text-sm absolute top-0 right-0 px-1`}>
+                    <span className={spadStatus[spad.status]}>{spadStatus[spad.status]}</span>
+                </p>
+                <h2 className='text-xl font-bold mb-0'>
+                    <Text>{spad.name}</Text>
+
+                </h2>
+                <p className="font-normal text-gray-400 mb-2">
                     {spad.symbol}
-                </td>
-            }
-            <td className='pt-4'>
-                <EtherscanAddress address={spadAddress} icon={true} />
-            </td>
-            <td className="uppercase spad-feature-list pt-4">
-                <FaDotCircle className={`${spadStatus[spad.status]} inline-block`} /> {" "}
-                {spadStatus[spad.status]}
-            </td>
-            {
-                (isPitcher && pitch) &&
-                <td className="uppercase pt-4">
-                    {pitchStatus[pitch.status]}
-                </td>
-            }
-        </tr>
+                </p>
+                <div className='mb-4'>
+                    <ProgressBar progress={spad.currentInvstPercent} />
+                    <p className='text-sm text-end'>
+                        {`${spad.currentInvestmentView} / ${spad.targetView} ${spad.investmentCurrency}`}
+                    </p>
+                </div>
+            </div>
+            <div className='inline-block mx-auto'>
+                <Button href={`/spads/${spadAddress}`}>Go to SPAD</Button>
+            </div>
+        </Card>
     )
 }
 
-export default PortfolioSpad
+export default PortfolioSpad2

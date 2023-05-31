@@ -1,11 +1,14 @@
 "use client";
 
+import PortfolioClubSpad from '@/components/spad/PortfolioClubSpad';
 import PortfolioSpad from '@/components/spads/PortfolioSpad';
+import PortfolioSpad2 from '@/components/spads/PortfolioSpad2';
 import Card from '@/components/template/Card';
 import Container from '@/components/template/Container'
 import Text from '@/components/template/Text';
 import WalletContext from '@/context/WalletContext'
 import { getContributedSpads, getPitchedSpads } from '@/helpers/actions'
+import { getSpadClubs } from '@/helpers/spad-club';
 import { getCreatedPrivateSpads, getCreatedSpads } from '@/helpers/spad-factory'
 import React, { useContext, useEffect, useState } from 'react'
 import { FaExclamationTriangle } from 'react-icons/fa';
@@ -15,6 +18,7 @@ const PortfolioPage = () => {
     const [investedSpads, setInvestedSpads] = useState([])
     const [pitchedSpads, setPitchedSpads] = useState([])
     const [privateSpads, setPrivateSpads] = useState([])
+    const [clubSpads, setClubSpads] = useState([])
 
     const { address } = useContext(WalletContext)
 
@@ -28,6 +32,9 @@ const PortfolioPage = () => {
             setPitchedSpads(spadAddresses2);
             const spadAddresses3 = await getCreatedPrivateSpads(address);
             setPrivateSpads(spadAddresses3);
+            const clubs = await getSpadClubs(address);
+            console.log(clubs);
+            setClubSpads(clubs);
         }
 
         if (address !== '') {
@@ -45,95 +52,85 @@ const PortfolioPage = () => {
     }
 
     return (
-        <Container className="max-w-3xl">
+        <Container className="max-w-5xl">
+            {
+                (clubSpads.length > 0) &&
+                <>
+                    <h2 className="text-2xl font-bold mb-4"><Text>ClubSpads</Text></h2>
+                    <div className='flex gap-5 mb-10'>
+                        {
+                            clubSpads.map((clubSpad, i) => {
+                                return <>
+                                    {
+                                        clubSpad.spadIds.map((spadId) => {
+                                            return <div key={`${clubSpad.clubAddress}-${spadId}`} className='w-80'>
+                                                <PortfolioClubSpad address={address} clubAddress={clubSpad.clubAddress} spadId={spadId}>
+                                                    {spadId}
+                                                </PortfolioClubSpad>
+                                            </div>
+                                        })
+                                    }
+                                </>
+                            })
+                        }
+                    </div>
+                </>
+            }
             {
                 (investedSpads.length > 0) &&
-                <Card className="rounded font-bold p-4 mb-5 shadow-lg">
-                    <h2 className="font-bold text-2xl inline-block"><Text>INVESTED SPADs</Text></h2>
-                    <table className='text-left mb-4'>
-                        <thead>
-                            <tr className="text-gray-500">
-                                <th>SPAD NAME</th>
-                                <th>SPAD SYMBOL</th>
-                                <th>ADDRESS</th>
-                                <th>STATUS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {investedSpads.map(function (spadAddress, i) {
-                                return <PortfolioSpad address={address} spadAddress={spadAddress} key={i} isInitiator={false} />
-                            })
-                            }
-                        </tbody>
-                    </table>
-                </Card>
+                <>
+                    <h2 className="font-bold text-2xl mb-4"><Text>INVESTED SPADs</Text></h2>
+                    <div className='flex gap-5 mb-10'>
+                        {investedSpads.map(function (spadAddress, i) {
+                            return <div key={spadAddress} className='w-80'>
+                                <PortfolioSpad2 address={address} spadAddress={spadAddress} isInitiator={false} />
+                            </div>
+                        })
+                        }
+                    </div>
+                </>
             }
             {
                 (createdSpads.length > 0) &&
-                <Card className="rounded font-bold p-4 mb-5 shadow-lg">
-                    <h2 className="font-bold text-2xl inline-block"><Text>CREATED SPADs</Text></h2>
-                    
-                    <table borderless className='text-left mb-4'>
-                        <thead>
-                            <tr className="text-gray-500">
-                                <th>SPAD NAME</th>
-                                <th>SPAD SYMBOL</th>
-                                <th>ADDRESS</th>
-                                <th>STATUS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {createdSpads.map(function (spadAddress, i) {
-                                return <PortfolioSpad address={address} spadAddress={spadAddress} key={i} isInitiator={true} />
-                            })
-                            }
-                        </tbody>
-                    </table>
-                </Card>
+                <>
+                    <h2 className="font-bold text-2xl mb-4"><Text>CREATED SPADs</Text></h2>
+                    <div className='flex gap-5 mb-10'>
+                        {createdSpads.map(function (spadAddress, i) {
+                            return <div key={spadAddress} className='w-80'>
+                                <PortfolioSpad2 address={address} spadAddress={spadAddress} isInitiator={true} />
+                            </div>
+                        })
+                        }
+                    </div>
+                </>
             }
             {
                 (privateSpads.length > 0) &&
-                <Card className="rounded font-bold p-4 mb-5 shadow-lg">
-                    <h2 className="font-bold text-2xl inline-block"><Text>Your Private SPADs</Text></h2>
-                    <table borderless className='text-left mb-4'>
-                        <thead>
-                            <tr className="text-gray-500">
-                                <th>SPAD NAME</th>
-                                <th>SPAD SYMBOL</th>
-                                <th>ADDRESS</th>
-                                <th>STATUS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {privateSpads.map(function (spadAddress, i) {
-                                return <PortfolioSpad address={address} spadAddress={spadAddress} key={i} isInitiator={true} />
-                            })
-                            }
-                        </tbody>
-                    </table>
-                </Card>
+                <>
+                    <h2 className="font-bold text-2xl mb-4"><Text>Private SPADs</Text></h2>
+                    <div className='flex gap-5 mb-10'>
+                        {privateSpads.map(function (spadAddress, i) {
+                            return <div key={spadAddress} className='w-80'>
+                                <PortfolioSpad2 address={address} spadAddress={spadAddress} isInitiator={false} />
+                            </div>
+                        })
+                        }
+                    </div>
+                </>
             }
             {
                 (pitchedSpads.length > 0) &&
-                <Card className="rounded font-bold p-4 mb-5 shadow-lg">
-                    <h2 className="font-bold text-2xl inline-block"><Text>PITCHED SPADs</Text></h2>
-                    <table borderless className='text-left mb-4'>
-                        <thead>
-                            <tr className="text-gray-500">
-                                <th>SPAD NAME</th>
-                                <th>ADDRESS</th>
-                                <th>STATUS</th>
-                                <th>PITCH STATUS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {pitchedSpads.map(function (spadAddress, i) {
-                                return <PortfolioSpad address={address} spadAddress={spadAddress} key={i} isPitcher={true} />
-                            })
-                            }
-                        </tbody>
-                    </table>
-                </Card>
+                <>
+                    <h2 className="font-bold text-2xl mb-4"><Text>PITCHED SPADs</Text></h2>
+                    <div className='flex gap-5 mb-10'>
+                        {pitchedSpads.map(function (spadAddress, i) {
+                            return <div key={spadAddress} className='w-80'>
+                                <PortfolioSpad2 address={address} spadAddress={spadAddress} isInitiator={false} />
+                            </div>
+                        })
+                        }
+                    </div>
+                </>
             }
             {
                 (investedSpads.length === 0 && createdSpads.length === 0 && pitchedSpads.length === 0 && privateSpads.length == 0) &&
