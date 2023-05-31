@@ -1,5 +1,6 @@
 "use client"
 
+import CreateSpadSelect from '@/components/layout/CreateSpadSelect'
 import Button from '@/components/template/Button'
 import Checkbox from '@/components/template/Checkbox'
 import Container from '@/components/template/Container'
@@ -83,8 +84,8 @@ const CreatePublicSpad = () => {
                 <p className="font-semibold mb-2 text-slate-400">LETS GET STARTED</p>
                 <Text className="uppercase font-bold text-2xl">Start a public SPAD</Text>
             </div>
-            
-            <form className='bg-white mx-auto mt-16 rounded-lg border max-w-2xl sm:mt-20 p-8 shadow-xl' onSubmit={handleStartSpad}>
+            <CreateSpadSelect className="max-w-2xl mx-auto" active="public" />
+            <form className='bg-white mx-auto mt-4 rounded-xl border max-w-2xl sm:mt-8 p-8 shadow-xl' onSubmit={handleStartSpad}>
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-3 mb-6">
                     <div className='sm:col-span-2'>
                         <label htmlFor="name" className='block mb-2 text-sm font-medium text-gray-900'>

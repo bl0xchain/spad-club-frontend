@@ -1,7 +1,9 @@
 "use client";
 
+import CreateSpadSelect from '@/components/layout/CreateSpadSelect';
 import Button from '@/components/template/Button';
 import Card from '@/components/template/Card';
+import Text from '@/components/template/Text';
 import TextArea from '@/components/template/TextArea';
 import TextInput from '@/components/template/TextInput';
 import WalletContext from '@/context/WalletContext';
@@ -38,7 +40,12 @@ const CreateClubPage = () => {
 
     return (
         <div>
-            <div className="max-w-sm mx-auto">
+            <div className='text-center'>
+                <p className="font-semibold mb-2 text-slate-400">LETS GET STARTED</p>
+                <Text className="uppercase font-bold text-2xl">Start a SpadClub</Text>
+            </div>
+            <CreateSpadSelect className="max-w-2xl mx-auto" active="club" />
+            <div className="max-w-2xl mx-auto mt-8">
                 <Card>
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 text-center">
                         Create a SpadClub
@@ -68,10 +75,10 @@ const CreateClubPage = () => {
                         </div>
                         {
                             creating ?
-                                <Button isProcessing={true} disabled>
+                                <Button isProcessing={true} disabled className="inline-block mx-auto">
                                     Creating a SpadClub
                                 </Button> :
-                                <Button type="submit">
+                                <Button type="submit" className="inline-block mx-auto">
                                     Create SpadClub
                                 </Button>
                         }
