@@ -40,7 +40,7 @@ const ConnectedAccount = ({ address }) => {
     }, [])
 
     return (
-        <div className='relative inline-block text-left' id="address-popover">
+        <div className='relative inline-block text-left cursor-pointer' id="address-popover">
             <div className='bg-green-100 px-4 py-2 rounded-xl flex items-center' id="addr-wrapper" onClick={() => setVisible(!visible)}>
                 <span id="addr-text">{getShortAddress(address)}</span>
                 {

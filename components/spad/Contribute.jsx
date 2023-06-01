@@ -30,7 +30,7 @@ const Contribute = ({ address, clubAddress, spadId, spad, loadSpad, contribution
     }
 
     return (
-        <div className='my-10'>
+        <div className='mt-2'>
         {
             show ?
             <form className='flex gap-4 items-center'>

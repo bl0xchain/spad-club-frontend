@@ -23,7 +23,7 @@ const SpadActions = ({ clubAddress, spadId, spad, loadSpad, creator, password })
 
     return (
         <div className='flex flex-col items-center justify-between'>
-            <h3 className=' mb-6'><span className='font-semibold text-gray-400'>Your Contribution:</span> {formatUSDC(contribution)} USDC</h3>
+            <h3 className='mt-4 mb-2'><span className='font-semibold text-gray-400'>Your Contribution:</span> {formatUSDC(contribution)} USDC</h3>
             {
                 parseInt(spad.target) > parseInt(spad.currentInvestment) ?
                 <>
