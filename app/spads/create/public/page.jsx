@@ -1,6 +1,7 @@
 "use client"
 
 import CreateSpadSelect from '@/components/layout/CreateSpadSelect'
+import Disclaimer from '@/components/layout/Disclaimer'
 import Button from '@/components/template/Button'
 import Checkbox from '@/components/template/Checkbox'
 import Container from '@/components/template/Container'
@@ -221,6 +222,9 @@ const CreatePublicSpad = () => {
                         defaultChecked={disclaimer}
                     />
                 </div>
+                <div className='mb-6'>
+                    <Disclaimer />
+                </div>
                 {
                     startSpadLoading ?
                     <Button className="mx-auto" disabled isProcessing={true}>STARTING A SPAD</Button> :
@@ -228,6 +232,7 @@ const CreatePublicSpad = () => {
                 }
                 
             </form>
+            
         </Container>
     )
 }

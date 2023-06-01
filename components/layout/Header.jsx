@@ -31,7 +31,8 @@ const Header = () => {
                     </Link>
                     <div ref={navLinks} className='duration-500 md:static absolute bg-gray-50 md:bg-transparent md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5'>
                         <div className='flex md:flex-row flex-col md:items-center md:gap-[2vw] gap-8 font-semibold'>
-                            <NavLink href="/spads" active={pathname == '/spads'}>View SPADs</NavLink>
+                            <NavLink href="/spads" active={pathname == '/spads'}>Public SPADs</NavLink>
+                            <NavLink href="/spads" active={pathname == '/clubs'}>SpadClubs</NavLink>
                             <NavLink href="/portfolio" active={pathname == '/portfolio'}>Portfolio</NavLink>
                         </div>
                     </div>

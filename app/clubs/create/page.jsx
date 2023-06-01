@@ -1,6 +1,7 @@
 "use client";
 
 import CreateSpadSelect from '@/components/layout/CreateSpadSelect';
+import Disclaimer from '@/components/layout/Disclaimer';
 import Button from '@/components/template/Button';
 import Card from '@/components/template/Card';
 import Text from '@/components/template/Text';
@@ -72,6 +73,9 @@ const CreateClubPage = () => {
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                             />
+                        </div>
+                        <div className='mb-3'>
+                            <Disclaimer />
                         </div>
                         {
                             creating ?

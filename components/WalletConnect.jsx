@@ -4,8 +4,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import Button from './template/Button'
 import Tooltip from './template/Tooltip'
 import Modal from './template/Modal'
-import { FaExclamationTriangle } from 'react-icons/fa'
+import { FaBan, FaExclamationTriangle } from 'react-icons/fa'
 import Image from 'next/image'
+import ConnectedAccount from './ConnectedAccount'
 
 const WalletConnect = () => {
     const { address, status, network, connectWallet, loadWallet, changeNetwork } = useContext(WalletContext)
@@ -46,7 +47,7 @@ const WalletConnect = () => {
                             </div>
                             
                         </div>
-                        <div className='bg-green-100 px-4 py-2 rounded-xl'>{getShortAddress(address)}</div>
+                        <ConnectedAccount address={address} />
                     </> :
                     <>
                         {
@@ -57,13 +58,13 @@ const WalletConnect = () => {
                                             Invalid Network
                                         </Button>
                                     </Tooltip>
-                                    <Modal show={true} onClose={false}>
+                                    <Modal show={true} onClose={false} size='small'>
                                         <div className="p-5 text-center">
-                                            <h3 className="text-xl font-bold text-gray-900">
-                                                Wrong Network
-                                                <FaExclamationTriangle className='block mx-auto text-5xl my-3 text-red-400' />
+                                            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                                                <FaBan className='block mx-auto text-5xl my-3 text-amber-400' />
+                                                Not connected to Arbitrum Goerli Network
                                             </h3>
-                                            <p>Please change your network to Arbitrum Goerli</p>
+                                            <p className='text-xl mb-4'>Your wallet is connected to a different network. Please switch to Arbitrum Goerli.</p>
                                             <Button onClick={changeNetwork} className="block mx-auto mt-4">Switch Network</Button>
                                         </div>
                                     </Modal>
