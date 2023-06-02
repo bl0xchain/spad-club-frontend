@@ -10,7 +10,7 @@ const Disclaimer = () => {
         <div>
             <p>* Investing in cryptocurrency projects via SPAD involves a high level of risk, including the potential loss of all your invested capital. Please read and understand the following risk disclosure before deciding to invest. <Text onClick={() => setVisible(true)} className='underline cursor-pointer'>Know More</Text></p>
             <Modal show={visible} onClose={() => setVisible(false)}>
-                <div className="flex flex-col gap-3 text-start">
+                <div className="flex flex-col gap-3 text-start text-gray-800">
                     <p className='font-bold'>Investment Risk Disclaimer</p>
                     <p>Investing in cryptocurrency projects via SPAD involves a high level of risk, including the potential loss of all your invested capital. Please read and understand the following risk disclosure before deciding to invest:</p>
                     <p>
