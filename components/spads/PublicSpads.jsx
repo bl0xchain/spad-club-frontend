@@ -24,7 +24,7 @@ const PublicSpads = () => {
     }
     return (
         <>
-        <div className='mb-5 bg-rose-100 text-rose-500 rounded-xl px-3 py-2'>
+        <div className='mb-5 bg-purple-100 text-purple-500 rounded-xl px-3 py-2'>
             <Disclaimer />
         </div>
         <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
