@@ -21,7 +21,6 @@ const CreatePrivateSpad = () => {
     const [target, setTarget] = useState("")
     const [minInvestment, setMinInvestment] = useState("")
     const [maxInvestment, setMaxInvestment] = useState("")
-    const [totalSupply, setTotalSupply] = useState("")
     const [startSpadLoading, setStartSpadLoading] = useState(false)
     const [tnc, setTnc] = useState(false)
     const [disclaimer, setDisclaimer] = useState(false)
@@ -176,19 +175,6 @@ const CreatePrivateSpad = () => {
                                 />
                             </div>
                         </div>
-                    </div>
-                    <div className="sm:col-start-2">
-                        <label htmlFor="totalSupply" className='block mb-2 text-sm font-medium text-gray-900'>
-                            TOTAL SUPPLY OF TOKEN
-                        </label>
-                        <TextInput
-                            id="totalSupply"
-                            type="number"
-                            placeholder="100"
-                            required={true}
-                            value={totalSupply}
-                            onChange={(e) => setTotalSupply(e.target.value)}
-                        />
                     </div>
                     <div className="sm:col-start-2">
                         <label htmlFor="passKey" className='block mb-2 text-sm font-medium text-gray-900'>
