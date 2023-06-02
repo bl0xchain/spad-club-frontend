@@ -1,5 +1,6 @@
 "use client";
 import DataLoading from '@/components/layout/DataLoading';
+import Disclaimer from '@/components/layout/Disclaimer';
 import CompletedSpad from '@/components/spads/CompletedSpad';
 import CreatorPitch from '@/components/spads/CreatorPitch';
 import Participants from '@/components/spads/Participants';
@@ -40,6 +41,9 @@ const SpadPage = ({ params }) => {
                 (spad.isPrivate && spad.status != 1 ) &&
                 <CreatorPitch spadAddress={spadAddress} creator={spad.creator} />
             }
+            <div className='mt-4 text-gray-600'>
+                <Disclaimer />
+            </div>
             <hr className='my-10 bg-gradient-to-r from-rose-400 via-purple-600 via-75% to-violet-600 h-1' />
             <Participants spadAddress={spadAddress} spad={spad} />
         </div>

@@ -6,6 +6,7 @@ import Button from '../template/Button';
 import TextInput from '../template/TextInput';
 import { toast } from 'react-toastify';
 import { contribute } from '@/helpers/actions';
+import PassKeyModal from './PassKeyModal';
 
 const Contribute = ({ spadAddress, spad, loadSpad }) => {
     const [isContribute, setIsContribute] = useState(false);
@@ -36,7 +37,8 @@ const Contribute = ({ spadAddress, spad, loadSpad }) => {
         }
     }
 
-    const handleContribute = async () => {
+    const handleContribute = async (e) => {
+        e.preventDefault();
         if (status !== 'CONNECTED') {
             toast.error("Please connect your wallet");
             return;
@@ -153,7 +155,10 @@ const Contribute = ({ spadAddress, spad, loadSpad }) => {
                                         }</>
 
                                 }
-
+                                {
+                                    spad.isPrivate &&
+                                    <PassKeyModal show={passKeyModalShow} setShow={setPassKeyModalShow} passKey={passKey} setPassKey={setPassKey} handleAction={handlePassKeyContribute} />
+                                }
                             </form> :
                             <Button className="mx-auto" onClick={() => setIsContribute(true)}>CONTRIBUTE</Button>
                     }

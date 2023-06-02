@@ -31,7 +31,7 @@ const CreatorPitch = ({ spadAddress, creator }) => {
     }
 
     return (
-        <Card>
+        <Card className="mt-4">
             <h5 className="mb-0">{pitch.name}</h5>
             <small className="text-gray-400">{creator}</small>
             <p className="mt-3">{pitch.description}</p>

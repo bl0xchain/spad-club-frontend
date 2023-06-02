@@ -1,6 +1,7 @@
 "use client";
 
 import DataLoading from '@/components/layout/DataLoading';
+import Disclaimer from '@/components/layout/Disclaimer';
 import EtherscanAddress from '@/components/layout/EtherscanAddress';
 import SpadActions from '@/components/spad/SpadActions';
 import Share from '@/components/spads/Share';
@@ -181,7 +182,9 @@ const SpadPage = ({ params }) => {
                                 <SpadActions clubAddress={clubAddress} spadId={spadId} spad={spad} loadSpad={loadSpad} creator={club.creator} password={password} />
                             }
                         </Card>
-
+                        <div className='mt-4 text-gray-600'>
+                            <Disclaimer />
+                        </div>
                     </>}
                     </>
             }

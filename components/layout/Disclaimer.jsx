@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Text from '../template/Text';
 import Modal from '../template/Modal';
 import Button from '../template/Button';
 
@@ -8,7 +7,7 @@ const Disclaimer = () => {
 
     return (
         <div>
-            <p>* Investing in cryptocurrency projects via SPAD involves a high level of risk, including the potential loss of all your invested capital. Please read and understand the following risk disclosure before deciding to invest. <Text onClick={() => setVisible(true)} className='underline cursor-pointer'>Know More</Text></p>
+            <p className='text-sm'>* Investing in cryptocurrency projects via SPAD involves a high level of risk, including the potential loss of all your invested capital. Please read and understand the following risk disclosure before deciding to invest. <span onClick={() => setVisible(true)} className='underline cursor-pointer'>Know More</span></p>
             <Modal show={visible} onClose={() => setVisible(false)}>
                 <div className="flex flex-col gap-3 text-start text-gray-800">
                     <p className='font-bold'>Investment Risk Disclaimer</p>

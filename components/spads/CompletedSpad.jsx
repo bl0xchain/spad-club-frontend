@@ -20,7 +20,7 @@ const CompletedSpad = ({ spadAddress, spad }) => {
     }, [address])
 
     return (
-        <div>
+        <div className='mt-4'>
             {
                 spad &&
                 <>
