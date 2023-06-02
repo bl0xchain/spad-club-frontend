@@ -82,7 +82,7 @@ const SpadPage = ({ params }) => {
                 ]}></Breadcrumb>
             }
             {
-                address == "" || spad?.error ?
+                spad == null || spad?.error ?
                     <div className="max-w-sm m-auto mt-10">
 
                         <Card>
@@ -100,7 +100,7 @@ const SpadPage = ({ params }) => {
                                 </div>
                                 {
                                     submiting ?
-                                        <Button isProcessing={true}>
+                                        <Button isProcessing={true} disabled>
                                             Submiting
                                         </Button> :
                                         <Button type='submit' onClick={handlePasswordSubmit}>
