@@ -3,7 +3,7 @@ import web3 from "./web3";
 const factoryAbi = require("../helpers/abis/spad-club-factory.json")
 const clubAbi = require("../helpers/abis/spad-club.json")
 const tokenAbi = require("../helpers/abis/custom-token.json")
-export const factoryAddress = "0xeb3F9aFc8E9AF8eE95cC11519Af37F260BabcC77"
+export const factoryAddress = "0x6ff9aF755c4305d349b578dc91fC33Cf61f0D6A1"
 export const usdcAddress = "0x6e557F271447FD2aA420cbafCdCD66eCDD5A71A8";
 export const factoryContract = new web3.eth.Contract(factoryAbi, factoryAddress)
 export const usdcContract = new web3.eth.Contract(tokenAbi, usdcAddress)
@@ -247,4 +247,26 @@ export const getSpadClubs = async(address) => {
     }
     console.log(spads);
     return spads;
+}
+
+export const getCreatedSpadClubs = async(address) => {
+    const clubAddresses = [];
+    const clubEvents = await factoryContract.getPastEvents('SpadClubCreated', {
+        filter: { creator: address },
+        fromBlock: 0,
+        toBlock: 'latest'
+    });
+    clubEvents.forEach((event) => {
+        if('0xFe2aA7B0aF149Df874A8923Cd09a694044E120ed' == event.returnValues.creator) {
+            clubAddresses.push(event.returnValues.spadClub);
+        }
+    });
+    return clubAddresses;
+}
+
+export const getCreatedClub = async(address) => {
+    const clubAddress = await factoryContract.methods.createdClub(address).call({
+        from: address
+    });
+    return clubAddress;
 }

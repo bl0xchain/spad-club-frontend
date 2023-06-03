@@ -70,7 +70,7 @@ const CreatePublicSpad = () => {
         setStartSpadLoading(true);
         const response = await startSpad(address, name, tokenSymbol, target, minInvestment, maxInvestment, currency, "");
         if (response.code == 200) {
-            toast.success("Spad is created");
+            toast.success("SPAD is created");
             router.push(`/spads/${response.data.events.SpadCreated.returnValues.spadAddress}`)
         } else {
             toast.error(response?.status)
@@ -93,7 +93,7 @@ const CreatePublicSpad = () => {
                         </label>
                         <TextInput
                             id="name"
-                            placeholder="Name your Spad (10 characters)"
+                            placeholder="Name your SPAD (10 characters)"
                             required={true}
                             value={name}
                             onChange={(e) => setName(e.target.value)}

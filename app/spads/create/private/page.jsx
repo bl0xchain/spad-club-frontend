@@ -75,7 +75,7 @@ const CreatePrivateSpad = () => {
         setStartSpadLoading(true);
         const response = await startSpad(address, name, tokenSymbol, target, minInvestment, maxInvestment, currency, passKey);
         if (response.code == 200) {
-            toast.success("Spad is created");
+            toast.success("SPAD is created");
             router.push(`/spads/${response.data.events.SpadPrivateCreated.returnValues.spadAddress}`)
         } else {
             toast.error(response?.status)
@@ -98,7 +98,7 @@ const CreatePrivateSpad = () => {
                         </label>
                         <TextInput
                             id="name"
-                            placeholder="Name your Spad (10 characters)"
+                            placeholder="Name your SPAD (10 characters)"
                             required={true}
                             value={name}
                             onChange={(e) => setName(e.target.value)}

@@ -8,7 +8,7 @@ const Footer = () => {
             <Container>
                 <div className='mx-auto py-4 flex flex-wrap items-center justify-between'>
                     <div>
-                        &copy; 2023 SpadClub
+                        &copy; 2023 SPADClub
                     </div>
                     <div className='flex items-center gap-5 text-xl'>
                         <a className="text-gray-600 hover:text-gray-900" href='#'><FaTwitter /></a>
