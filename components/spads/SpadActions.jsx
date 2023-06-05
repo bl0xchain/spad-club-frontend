@@ -57,7 +57,7 @@ const SpadActions = ({ spadAddress, spad, loadSpad }) => {
     }, [address]);
 
     return (
-        <div className='text-center'>
+        <div className='text-center px-2 md:px-0'>
             {
                 spad.status === "1" ?
                     <>{

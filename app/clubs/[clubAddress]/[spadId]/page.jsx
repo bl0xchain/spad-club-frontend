@@ -72,7 +72,7 @@ const SpadPage = ({ params }) => {
         )
     }
     return (
-        <div className='max-w-4xl mx-auto'>
+        <div className='max-w-4xl mx-auto px-2'>
             {
                 (club && spad) &&
                 <Breadcrumb items={[
@@ -113,19 +113,19 @@ const SpadPage = ({ params }) => {
                     </div>
                     :
                     <> {spad && club && <>
-                        <Card>
+                        <Card noPadding={true} className={`pb-4`}>
                             <div className="relative rounded-xl bg-gradient-to-r from-rose-400 via-purple-600 via-75% to-violet-600 p-5 text-white">
                                 <Share />
-                                <div className=''>
+                                <div className='mt-2'>
                                     <h2 className="font-bold text-4xl mb-4">{spad.spadName}</h2>
                                     <p className='text-lg'>{spad?.spadDescription}</p>
                                 </div>
                             </div>
-                            <div className='grid grid-cols-4 gap-4 my-5 font-bold'>
+                            <div className='grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 my-5 font-bold px-2 md:px-0'>
                                 <div className='text-gray-500'>
                                     SPAD CREATOR
                                 </div>
-                                <div className='col-span-3'>
+                                <div className='md:col-span-3'>
                                     <EtherscanAddress address={club.creator} icon={true} />
                                 </div>
                                 <div className='text-gray-500'>CURRENCY</div>
@@ -165,7 +165,7 @@ const SpadPage = ({ params }) => {
                                     </span>
                                 </div>
                                 <div className='text-gray-500'>SPAD PROGRESS</div>
-                                <div className='col-span-3'>
+                                <div className='col-span-2 md:col-span-3'>
                                     <ProgressBar progress={currentInvestment} />
                                     <div className='flex justify-between'>
                                         <Text>{currentInvestment}% Contribution done</Text>

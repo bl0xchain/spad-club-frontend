@@ -21,14 +21,14 @@ const ClubCard = ({ clubAddress, address }) => {
 
     if(loading) {
         return (
-            <Card>
+            <Card className={`mb-4 md:mb-0`}>
                 <DataLoading />
             </Card>
         )
     }
 
     return (
-        <Card href={`/clubs/${clubAddress}`}>
+        <Card href={`/clubs/${clubAddress}`} className={`mb-4 md:mb-0`}>
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 { club.name }
             </h5>

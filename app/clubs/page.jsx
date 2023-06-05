@@ -28,7 +28,7 @@ const ClubsPage = () => {
 
     return (
         <Container>
-            <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
+            <div className='md:grid md:grid-cols-3 gap-4'>
                 { clubs.map((clubAddress) => (
                     <ClubCard key={clubAddress} clubAddress={clubAddress} address={address} />
                 )) }

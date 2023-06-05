@@ -31,7 +31,7 @@ const SpadPage = ({ params }) => {
     }
 
     return (
-        <div className='max-w-4xl mx-auto px-10'>
+        <div className='max-w-4xl mx-auto px-2 md:px-10'>
             <SpadDetailsCard spadAddress={spadAddress} spad={spad} loadSpad={loadSpad} />
             {
                 (spad.status == 4) &&

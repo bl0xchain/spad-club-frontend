@@ -40,7 +40,7 @@ const SpadClubPage = ({ params }) => {
   }
 
   return (
-    <div className='max-w-4xl' style={{ margin: "0 auto" }}>
+    <div className='max-w-4xl mx-auto px-2'>
       <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
         {club.name}
       </h2>
@@ -62,7 +62,7 @@ const SpadClubPage = ({ params }) => {
         <CreateSpad clubAddress={clubAddress} loadClub={loadClub} creator={club.creator} />
       </div>
       { spadIds.length > 0 && 
-        <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
+        <div className='md:grid md:grid-cols-3 gap-4'>
           { spadIds.map((id) => (
             <SpadCard key={id} clubAddress={clubAddress} spadId={id} />
           )) }

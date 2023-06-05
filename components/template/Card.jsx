@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const Card = ({ children, className, href, ...props }) => {
+const Card = ({ children, className, href, noPadding, ...props }) => {
     return (
         <>
             {
@@ -12,7 +12,7 @@ const Card = ({ children, className, href, ...props }) => {
                         </div>
                     </Link> :
                     <div className={`flex rounded-xl border border-gray-100 bg-white shadow-xl flex-col ${className}`}>
-                        <div className='flex h-full flex-col justify-center gap-4 p-6'>
+                        <div className={`flex h-full flex-col justify-center gap-4 ${!noPadding && 'p-6'}`}>
                             {children}
                         </div>
                     </div>
