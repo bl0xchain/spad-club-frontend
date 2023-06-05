@@ -41,7 +41,7 @@ const WalletConnect = () => {
                                 alt="Arbitrum"
                                 className='mt-1 width-auto height-auto'
                             />
-                            <div className='leading-3'>
+                            <div className='leading-3 truncate'>
                                 { network }
                                 <div className='text-xs'>Goerli</div>
                             </div>

@@ -39,7 +39,7 @@ const SpadCard = ({ spadAddress }) => {
     }
 
     return (
-        <Card className='relative text-gray-700'>
+        <Card className='relative text-gray-700 mb-4 md:mb-0'>
             <div className={"spad-status " + spadStatus[spad.status]}>{spadStatus[spad.status]}</div>
             <Link href={`/spads/${spadAddress}`}>
                 <Text className='font-bold'>{spad.name}</Text>

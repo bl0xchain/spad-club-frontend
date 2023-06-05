@@ -27,7 +27,7 @@ const PublicSpads = () => {
         <div className='mb-5 bg-gray-50 text-gray-500 rounded-xl px-3 py-2'>
             <Disclaimer />
         </div>
-        <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
+        <div className='md:grid grid-cols-2 md:grid-cols-3 gap-4'>
             { spadAddresses.map((spadAddress) => (
                 <SpadCard key={spadAddress} spadAddress={spadAddress} />
             )) }
