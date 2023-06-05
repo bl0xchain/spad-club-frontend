@@ -90,7 +90,7 @@ const CreatePrivateSpad = () => {
                 <Text className="uppercase font-bold text-2xl">Start a private SPAD</Text>
             </div>
             <CreateSpadSelect className="max-w-2xl mx-auto" active="private" />
-            <form className='bg-white mx-auto mt-4 rounded-lg border max-w-2xl sm:mt-8 p-8 shadow-xl' onSubmit={handleStartSpad}>
+            <form className='bg-white mx-auto mt-4 rounded-lg border max-w-2xl sm:mt-8 p-3 md:p-8 shadow-xl' onSubmit={handleStartSpad}>
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-3 mb-6">
                     <div className='sm:col-span-2'>
                         <label htmlFor="name" className='block mb-2 text-sm font-medium text-gray-900'>
@@ -143,7 +143,7 @@ const CreatePrivateSpad = () => {
                         <label className='block mb-2 text-center text-sm font-medium text-gray-900'>
                             PARTICIPATION AMOUNT
                         </label>
-                        <div className='flex gap-x-8'>
+                        <div className='flex gap-x-2 md:gap-x-8'>
                             <div className='flex-1'>
                                 <label htmlFor="minInvestment" className='block mb-2 text-sm font-medium text-gray-900'>
                                     MINIMUM

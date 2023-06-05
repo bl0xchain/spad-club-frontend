@@ -5,6 +5,7 @@ import CreateSpadSelect from '@/components/layout/CreateSpadSelect';
 import Disclaimer from '@/components/layout/Disclaimer';
 import Button from '@/components/template/Button';
 import Card from '@/components/template/Card';
+import Container from '@/components/template/Container';
 import Text from '@/components/template/Text';
 import TextArea from '@/components/template/TextArea';
 import TextInput from '@/components/template/TextInput';
@@ -54,7 +55,7 @@ const CreateClubPage = () => {
     }, [address])
 
     return (
-        <div>
+        <Container>
             <div className='text-center'>
                 <p className="font-semibold mb-2 text-slate-400">LETS GET STARTED</p>
                 <Text className="uppercase font-bold text-2xl">Start a SPADClub</Text>
@@ -112,7 +113,7 @@ const CreateClubPage = () => {
                     </div>
             }
 
-        </div>
+        </Container>
     )
 }
 

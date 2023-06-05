@@ -12,7 +12,7 @@ const Card = ({ children, className, href, noPadding, ...props }) => {
                         </div>
                     </Link> :
                     <div className={`flex rounded-xl border border-gray-100 bg-white shadow-xl flex-col ${className}`}>
-                        <div className={`flex h-full flex-col justify-center gap-4 ${!noPadding && 'p-6'}`}>
+                        <div className={`flex h-full flex-col justify-center gap-4 ${!noPadding && 'p-3 md:p-6'}`}>
                             {children}
                         </div>
                     </div>
