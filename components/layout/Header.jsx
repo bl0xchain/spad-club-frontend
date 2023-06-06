@@ -15,7 +15,7 @@ const Header = () => {
     const navLinks = useRef();
 
     const handleMenu = () => {
-        navLinks.current.classList.toggle('top-[0%]');
+        navLinks.current.classList.toggle('left-[0%]');
         menuIcon.current.classList.toggle('hidden');
         closeIcon.current.classList.toggle('hidden');
     }
@@ -39,7 +39,7 @@ const Header = () => {
                             </div>
                         </div>
                     </div>
-                    <div ref={navLinks} className='duration-500 md:static absolute bg-gray-50 md:bg-transparent md:min-h-fit min-h-[100vh] left-0 top-[-100%] md:w-auto w-full flex flex-col items-center px-5 z-40'>
+                    <div ref={navLinks} className='duration-500 md:static absolute bg-gray-50 md:bg-transparent md:min-h-fit min-h-[100vh] left-[-100%] top-0 md:w-auto w-full flex flex-col items-center px-5 z-40'>
                         <Text className='text-3xl font-extrabold md:hidden mt-4 mb-10'>
                             SPAD
                         </Text>
