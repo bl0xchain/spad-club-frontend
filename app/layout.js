@@ -7,8 +7,8 @@ import { GlobalProvider } from './GlobalProvider'
 const karla = Karla({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'SPADClub DApp',
-  description: 'Create SPADClubs and Manage SPAD funds',
+  title: 'SPAD - Fund Together with SPADs',
+  description: 'Welcome to the democratized future of cryptocurrency investment. SPAD provides a platform that opens the door for everyone to contribute to crypto projects.',
 }
 
 export default function RootLayout({ children }) {
